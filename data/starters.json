@@ -1,0 +1,173 @@
+[
+  {
+    "id": "nisar-gcov-search",
+    "datasetId": "nisar-l2-gcov",
+    "lang": "python",
+    "title": "Search NISAR GCOV scenes",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. Bounding box: (west, south, east, north)\nresults = earthaccess.search_data(\n    short_name=\"NISAR_L2_GCOV_PROVISIONAL_V1\",\n    bounding_box=(-122.6, 37.0, -121.5, 38.2),  # San Francisco Bay\n    temporal=(\"2025-10-01\", \"2026-10-04\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./nisar\")"
+  },
+  {
+    "id": "viirs-fire-search",
+    "datasetId": "viirs-snpp-fire-vnp14img",
+    "lang": "python",
+    "title": "Find VIIRS fire swaths for a region",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# VIIRS 375 m active fire swaths over California, one week\nresults = earthaccess.search_data(\n    short_name=\"VNP14IMG\",\n    bounding_box=(-124.5, 32.5, -114.0, 42.0),\n    temporal=(\"2025-08-01\", \"2025-08-07\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Swap short_name to \"MOD14\" for the Terra MODIS record (2000 onward).\n# Downloads need Earthdata Login:\n# earthaccess.login()\n# earthaccess.download(results, \"./fires\")"
+  },
+  {
+    "id": "firms-area-csv",
+    "datasetId": "firms-api",
+    "lang": "python",
+    "title": "Pull fire detections for a bounding box",
+    "runsIn": "python",
+    "needsLogin": true,
+    "code": "import os, io\nimport requests\nimport pandas as pd\n\n# Get a free MAP_KEY at https://firms.modaps.eosdis.nasa.gov/api/map_key/\nkey = os.environ[\"FIRMS_MAP_KEY\"]\nsource = \"VIIRS_SNPP_SP\"          # or MODIS_SP for the MODIS archive\nbbox = \"-124.5,32.5,-114.0,42.0\"  # west,south,east,north\nurl = f\"https://firms.modaps.eosdis.nasa.gov/api/area/csv/{key}/{source}/{bbox}/5/2025-08-01\"\n\nr = requests.get(url, timeout=60)\nr.raise_for_status()\ndf = pd.read_csv(io.StringIO(r.text))\nprint(len(df), \"detections\")\nprint(df[[\"latitude\", \"longitude\", \"acq_date\", \"confidence\"]].head())"
+  },
+  {
+    "id": "smap-soil-moisture-search",
+    "datasetId": "smap-l3-soil-moisture",
+    "lang": "python",
+    "title": "List daily SMAP soil moisture files",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Daily 9 km SMAP soil moisture over Iowa farmland\nresults = earthaccess.search_data(\n    short_name=\"SPL3SMP_E\",\n    bounding_box=(-96.6, 40.4, -90.1, 43.5),\n    temporal=(\"2026-06-01\", \"2026-06-30\"),\n    count=5,\n)\nprint(len(results), \"daily files\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# earthaccess.login()  # needed to download the HDF5 files\n# earthaccess.download(results, \"./smap\")"
+  },
+  {
+    "id": "hls-farm-search",
+    "datasetId": "hls-landsat-l30",
+    "lang": "python",
+    "title": "Find low-cloud HLS scenes over a farm",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# 30 m HLS Landsat scenes over a single farm area, low cloud only\nresults = earthaccess.search_data(\n    short_name=\"HLSL30\",\n    bounding_box=(-93.7, 41.9, -93.5, 42.1),  # near Ames, Iowa\n    temporal=(\"2026-05-01\", \"2026-09-30\"),\n    cloud_cover=(0, 20),\n    count=5,\n)\nprint(len(results), \"scenes\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Each scene has one Cloud Optimized GeoTIFF per band.\n# earthaccess.login()\n# earthaccess.download(results[:1], \"./hls\")"
+  },
+  {
+    "id": "grace-mascon-search",
+    "datasetId": "grace-mascon",
+    "lang": "python",
+    "title": "Locate the GRACE mascon file",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# The JPL mascon record is one NetCDF file covering 2002 to present\nresults = earthaccess.search_data(\n    short_name=\"TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4\",\n    count=5,\n)\nprint(len(results), \"file(s)\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# earthaccess.login()\n# path = earthaccess.download(results, \"./grace\")[0]\n# import xarray as xr; print(xr.open_dataset(path))"
+  },
+  {
+    "id": "power-season-rainfall",
+    "datasetId": "nasa-power-api",
+    "lang": "python",
+    "title": "Season rainfall for one farm",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import requests\n\n# Daily temperature, rain and sunlight for one farm, no key needed\nparams = {\n    \"parameters\": \"T2M,PRECTOTCORR,ALLSKY_SFC_SW_DWN\",\n    \"community\": \"AG\",\n    \"latitude\": 42.03, \"longitude\": -93.63,\n    \"start\": \"20250501\", \"end\": \"20250930\",\n    \"format\": \"JSON\",\n}\nr = requests.get(\"https://power.larc.nasa.gov/api/temporal/daily/point\",\n                 params=params, timeout=120)\nr.raise_for_status()\ndata = r.json()[\"properties\"][\"parameter\"]\nrain = data[\"PRECTOTCORR\"]\nprint(\"days:\", len(rain))\nprint(\"season rainfall (mm):\", round(sum(v for v in rain.values() if v >= 0), 1))"
+  },
+  {
+    "id": "power-daily-js",
+    "datasetId": "nasa-power-api",
+    "lang": "javascript",
+    "title": "Daily temperature in the browser",
+    "runsIn": "browser",
+    "needsLogin": false,
+    "code": "// Runs in the browser or Node 18+ (POWER sends CORS headers)\nconst params = new URLSearchParams({\n  parameters: \"T2M,PRECTOTCORR\",\n  community: \"AG\",\n  latitude: \"42.03\",\n  longitude: \"-93.63\",\n  start: \"20250701\",\n  end: \"20250707\",\n  format: \"JSON\",\n});\nconst res = await fetch(`https://power.larc.nasa.gov/api/temporal/daily/point?${params}`);\nconst json = await res.json();\nconst temps = json.properties.parameter.T2M;\nfor (const [day, t] of Object.entries(temps)) {\n  console.log(day, `${t} C`);\n}"
+  },
+  {
+    "id": "gistemp-trend",
+    "datasetId": "gistemp",
+    "lang": "python",
+    "title": "Global temperature trend per decade",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import io\nimport numpy as np\nimport pandas as pd\nimport requests\n\nurl = \"https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.csv\"\ntext = requests.get(url, timeout=60).text\ndf = pd.read_csv(io.StringIO(text), skiprows=1, na_values=\"***\")\ndf = df[[\"Year\", \"J-D\"]].dropna()  # annual global anomaly, deg C\n\n# Least-squares trend since 1980\nrecent = df[df[\"Year\"] >= 1980]\nslope, intercept = np.polyfit(recent[\"Year\"], recent[\"J-D\"], 1)\nprint(\"years:\", len(df), \"| latest full year:\", int(df[\"Year\"].iloc[-1]))\nprint(f\"trend since 1980: {slope * 10:.3f} C per decade\")\n# For significance, use scipy.stats.linregress (p-value) or pymannkendall."
+  },
+  {
+    "id": "horizons-sun-elevation",
+    "datasetId": "jpl-horizons",
+    "lang": "python",
+    "title": "Sun elevation at a lunar south pole site",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import requests\n\n# Sun azimuth/elevation seen from a lunar south pole site (lon 0, lat -89.5).\n# Use COMMAND='399' for Earth instead of the Sun ('10').\nparams = {\n    \"format\": \"json\",\n    \"COMMAND\": \"'10'\",\n    \"MAKE_EPHEM\": \"'YES'\", \"EPHEM_TYPE\": \"'OBSERVER'\", \"OBJ_DATA\": \"'NO'\",\n    \"CENTER\": \"'coord@301'\", \"COORD_TYPE\": \"'GEODETIC'\",\n    \"SITE_COORD\": \"'0,-89.5,0'\",  # east lon, lat, altitude km\n    \"START_TIME\": \"'2026-12-01'\", \"STOP_TIME\": \"'2026-12-03'\",\n    \"STEP_SIZE\": \"'6h'\", \"QUANTITIES\": \"'4'\",  # 4 = azimuth and elevation\n}\nr = requests.get(\"https://ssd.jpl.nasa.gov/api/horizons.api\", params=params, timeout=60)\nresult = r.json()[\"result\"]\ntable = result.split(\"$$SOE\")[1].split(\"$$EOE\")[0]\nfor line in table.strip().splitlines():\n    print(line)"
+  },
+  {
+    "id": "sbdb-lookup",
+    "datasetId": "jpl-sbdb",
+    "lang": "python",
+    "title": "Look up an asteroid orbit",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import requests\n\n# Look up any asteroid or comet by name or designation\nr = requests.get(\"https://ssd-api.jpl.nasa.gov/sbdb.api\",\n                 params={\"sstr\": \"Bennu\", \"phys-par\": \"1\"}, timeout=30)\nr.raise_for_status()\nd = r.json()\nobj = d[\"object\"]\nelements = {e[\"name\"]: e[\"value\"] for e in d[\"orbit\"][\"elements\"]}\nprint(obj[\"fullname\"], \"| class:\", obj[\"orbit_class\"][\"name\"])\nprint(\"semi-major axis (au):\", elements[\"a\"], \"| eccentricity:\", elements[\"e\"])\nprint(\"near-Earth object:\", obj[\"neo\"], \"| hazardous:\", obj[\"pha\"])"
+  },
+  {
+    "id": "spherex-visits",
+    "datasetId": "irsa-spherex",
+    "lang": "python",
+    "title": "List SPHEREx visits to one sky position",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import io\nimport requests\nimport pandas as pd\n\n# Find every SPHEREx image (detector D1) that covers one sky position.\n# Repeat visits of the same spot are what reveal moving objects.\nra, dec = 150.1, 2.2  # COSMOS field; change to your target\nquery = f\"\"\"\nSELECT obs_id, obs_collection, t_min, access_url\nFROM spherex.obscore\nWHERE CONTAINS(POINT('ICRS', {ra}, {dec}), s_region) = 1\n  AND energy_bandpassname = 'SPHEREx-D1'\nORDER BY t_min\n\"\"\"\nr = requests.get(\"https://irsa.ipac.caltech.edu/TAP/sync\",\n                 params={\"QUERY\": query, \"FORMAT\": \"csv\"}, timeout=300)\ndf = pd.read_csv(io.StringIO(r.text))\nprint(len(df), \"visits\")  # t_min is a Modified Julian Date\nprint(df[[\"obs_id\", \"obs_collection\", \"t_min\"]].head())"
+  },
+  {
+    "id": "osdr-study-search",
+    "datasetId": "nasa-osdr",
+    "lang": "python",
+    "title": "Search spaceflight bone-loss studies",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import requests\n\n# Search public spaceflight biology studies (GeneLab + ALSDA)\nparams = {\"term\": \"bone loss\", \"type\": \"cgene,alsda\", \"from\": 0, \"size\": 5}\nr = requests.get(\"https://osdr.nasa.gov/osdr/data/search\", params=params, timeout=60)\nr.raise_for_status()\nhits = r.json()[\"hits\"]\nprint(\"matching studies:\", hits[\"total\"])\nfor h in hits[\"hits\"]:\n    s = h[\"_source\"]\n    print(s.get(\"Accession\"), \"|\", s.get(\"Study Title\", \"\")[:80])"
+  },
+  {
+    "id": "ntrs-combustion-search",
+    "datasetId": "ntrs-api",
+    "lang": "python",
+    "title": "Search fire safety reports",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import requests\n\n# Search NASA technical reports on microgravity combustion\nparams = {\"q\": \"microgravity flame spread spacecraft fire safety\", \"page.size\": 5}\nr = requests.get(\"https://ntrs.nasa.gov/api/citations/search\", params=params, timeout=60)\nr.raise_for_status()\ndata = r.json()\nprint(\"total matches:\", data[\"stats\"][\"total\"])\nfor rec in data[\"results\"]:\n    print(rec[\"id\"], \"|\", rec[\"title\"][:90])\n    # Record page: https://ntrs.nasa.gov/citations/<id>"
+  },
+  {
+    "id": "svs-visualization-search",
+    "datasetId": "nasa-svs",
+    "lang": "python",
+    "title": "Find NASA visualizations by topic",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import requests\n\n# Find NASA visualizations to pair with sound\nr = requests.get(\"https://svs.gsfc.nasa.gov/api/search/\",\n                 params={\"search\": \"sea surface temperature\", \"limit\": 5}, timeout=60)\nr.raise_for_status()\ndata = r.json()\nprint(\"matches:\", data[\"count\"])\nfor item in data[\"results\"]:\n    print(item[\"id\"], item[\"release_date\"][:10], \"|\", item[\"title\"])\n    # Full media list for one entry: https://svs.gsfc.nasa.gov/api/<id>"
+  },
+  {
+    "id": "image-library-search",
+    "datasetId": "nasa-image-library",
+    "lang": "javascript",
+    "title": "Search NASA photos in the browser",
+    "runsIn": "browser",
+    "needsLogin": false,
+    "code": "// No key, CORS enabled: works directly in the browser\nconst q = encodeURIComponent(\"Apollo 15 lunar roving vehicle\");\nconst res = await fetch(`https://images-api.nasa.gov/search?q=${q}&media_type=image`);\nconst { collection } = await res.json();\nconsole.log(\"hits:\", collection.metadata.total_hits);\nfor (const item of collection.items.slice(0, 5)) {\n  const meta = item.data[0];\n  const thumb = item.links?.[0]?.href;\n  console.log(meta.nasa_id, \"|\", meta.title, \"|\", thumb);\n}"
+  },
+  {
+    "id": "donki-sep-events",
+    "datasetId": "donki-space-weather",
+    "lang": "javascript",
+    "title": "Recent solar particle events",
+    "runsIn": "browser",
+    "needsLogin": false,
+    "code": "// Solar energetic particle events (a radiation hazard for crews).\n// No key; CORS enabled; date window must be 60 days or less.\nconst url = \"https://ccmc.gsfc.nasa.gov/DONKI-API/get/SEP\" +\n  \"?startDate=2026-08-06&endDate=2026-10-04\";\nconst events = await fetch(url).then((r) => r.json());\nconsole.log(\"SEP events:\", events.length);\nfor (const e of events) {\n  const instruments = e.instruments.map((i) => i.displayName).join(\", \");\n  console.log(e.eventTime, \"|\", instruments);\n}\n// Other event types: replace SEP with FLR (flares) or CME."
+  },
+  {
+    "id": "moon-south-pole-tile",
+    "datasetId": "moon-trek-south-pole",
+    "lang": "javascript",
+    "title": "Fetch a south pole illumination tile",
+    "runsIn": "browser",
+    "needsLogin": false,
+    "code": "// Read the WMTS capabilities for the lunar south pole illumination layer,\n// then fetch one tile. Moon Trek tiles send CORS headers.\nconst base = \"https://trek.nasa.gov/tiles/Moon/SP/WAC_POLE_ILL_PCT_SOUTH_100M/1.0.0\";\nconst xml = await fetch(`${base}/WMTSCapabilities.xml`).then((r) => r.text());\nconst template = xml.match(/template=\"([^\"]+)\"/)[1];\nconst matrixSet = xml.match(/<TileMatrixSet>([^<]+)<\\/TileMatrixSet>/)[1];\nconsole.log(\"tile template:\", template);\n\nconst tileUrl = template\n  .replace(\"{Style}\", \"default\").replace(\"{TileMatrixSet}\", matrixSet)\n  .replace(\"{TileMatrix}\", \"0\").replace(\"{TileRow}\", \"0\").replace(\"{TileCol}\", \"0\");\nconst tile = await fetch(tileUrl);\nconsole.log(tile.status, tile.headers.get(\"content-type\"), tileUrl);\n// Earth visibility layer: swap the path to AVGVISIB_85S_060M_201608_EARTH_SP"
+  },
+  {
+    "id": "gibs-true-color-tile",
+    "datasetId": "gibs",
+    "lang": "javascript",
+    "title": "Fetch a GIBS true-color tile",
+    "runsIn": "browser",
+    "needsLogin": false,
+    "code": "// Build a GIBS WMTS tile URL (no key, CORS enabled) for a given day.\r\n// Layer names come from the GIBS capabilities document.\r\nconst layer = \"MODIS_Terra_CorrectedReflectance_TrueColor\";\r\nconst date = \"2026-10-01\";\r\nconst [zoom, row, col] = [2, 1, 2];\r\nconst url = `https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/${layer}` +\r\n  `/default/${date}/250m/${zoom}/${row}/${col}.jpg`;\r\n\r\nconst res = await fetch(url);\r\nconsole.log(res.status, res.headers.get(\"content-type\"), url);\r\n// In a map library (Leaflet, OpenLayers) use the same template with\r\n// {z}/{y}/{x}. Fire layers such as VIIRS_SNPP_Thermal_Anomalies_375m_All\r\n// are vector tiles (.mvt, 500m matrix set); check the capabilities XML."
+  }
+]

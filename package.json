@@ -1,0 +1,24 @@
+{
+  "name": "space-data-atlas",
+  "version": "1.0.0",
+  "description": "Every NASA Space Apps 2026 challenge, traced to the NASA data that can solve it. Static site + MCP server.",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "validate": "node tools/validate.mjs",
+    "check:cmr": "node tools/check-cmr.mjs",
+    "check:links": "node tools/check-links.mjs",
+    "dev": "npm run build && wrangler pages dev public --port 8788",
+    "test:smoke": "node tests/smoke.mjs",
+    "test:mcp": "node tests/mcp.mjs",
+    "deploy": "npm run build && npm run validate && wrangler pages deploy public --project-name=space-data-atlas --branch=main",
+    "scrape": "node tools/scrape-challenges.mjs 2026"
+  },
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "playwright": "^1.63.0",
+    "wrangler": "^4.147.0",
+    "zod": "^4.6.5"
+  },
+  "private": true
+}

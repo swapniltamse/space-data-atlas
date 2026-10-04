@@ -1,0 +1,1004 @@
+[
+  {
+    "id": "nisar-l2-gcov",
+    "name": "NISAR L2 Geocoded Polarimetric Covariance (GCOV), Provisional",
+    "provider": "NASA ASF DAAC",
+    "description": "Map-projected L-band radar backscatter from the NASA-ISRO NISAR mission, the simplest NISAR product for spotting surface change such as flooding, crop growth, forest loss or burn scars. Released as a provisional (pre-validation) product, so treat values with care; a beta version and urgent-response products also exist in CMR.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2854338529-ASF",
+      "cmrShortName": "NISAR_L2_GCOV_PROVISIONAL_V1",
+      "cmrConceptId": "C2854338529-ASF",
+      "gibsLayer": "NISAR_L2_Geocoded_Polarimetric_Covariance"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "HDF5"
+    ],
+    "docsUrl": "https://nisar-docs.asf.alaska.edu/",
+    "topics": [
+      "radar",
+      "sar",
+      "land-change",
+      "wetlands",
+      "agriculture",
+      "wildfire"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "nisar-l2-gunw",
+    "name": "NISAR L2 Geocoded Unwrapped Interferogram (GUNW), Provisional",
+    "provider": "NASA ASF DAAC",
+    "description": "Interferograms built from pairs of NISAR radar passes, showing centimeter-scale ground motion from earthquakes, subsidence, landslides or glacier flow. Provisional product; expect large HDF5 files and some InSAR background before using it.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2854335566-ASF",
+      "cmrShortName": "NISAR_L2_GUNW_PROVISIONAL_V1",
+      "cmrConceptId": "C2854335566-ASF"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "HDF5"
+    ],
+    "docsUrl": "https://www.earthdata.nasa.gov/data/catalog/asf-nisar-l2-gunw-provisional-v1-1",
+    "topics": [
+      "radar",
+      "sar",
+      "insar",
+      "earthquakes",
+      "glaciers",
+      "deformation"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "opera-rtc-s1",
+    "name": "OPERA Radiometric Terrain Corrected Backscatter from Sentinel-1 (RTC-S1)",
+    "provider": "NASA ASF DAAC / JPL OPERA",
+    "description": "Analysis-ready C-band radar backscatter from Sentinel-1 as Cloud Optimized GeoTIFFs, validated and much easier to open than raw SAR. A good fallback or comparison layer for NISAR, with a longer archive.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2777436413-ASF",
+      "cmrShortName": "OPERA_L2_RTC-S1_V1",
+      "cmrConceptId": "C2777436413-ASF",
+      "gibsLayer": "OPERA_L2_Radiometric_Terrain_Corrected_SAR_Sentinel-1"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "GeoTIFF",
+      "HDF5"
+    ],
+    "docsUrl": "https://www.earthdata.nasa.gov/data/catalog/asf-opera-l2-rtc-s1-v1-1",
+    "topics": [
+      "radar",
+      "sar",
+      "land-change",
+      "flooding"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "opera-dswx-hls",
+    "name": "OPERA Dynamic Surface Water Extent from HLS (DSWx-HLS)",
+    "provider": "NASA PO.DAAC / JPL OPERA",
+    "description": "30 m maps of open and partial surface water derived from Landsat and Sentinel-2, useful for tracking wetland loss, flooding and reservoir change, and for ground-truthing radar water maps.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2617126679-POCLOUD",
+      "cmrShortName": "OPERA_L3_DSWX-HLS_V1",
+      "cmrConceptId": "C2617126679-POCLOUD",
+      "gibsLayer": "OPERA_L3_Dynamic_Surface_Water_Extent-HLS"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "GeoTIFF"
+    ],
+    "docsUrl": "https://podaac.jpl.nasa.gov/dataset/OPERA_L3_DSWX-HLS_V1",
+    "topics": [
+      "water",
+      "wetlands",
+      "flooding",
+      "land-change"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "opera-dist-alert-hls",
+    "name": "OPERA Land Surface Disturbance Alert from HLS (DIST-ALERT)",
+    "provider": "NASA LP DAAC / JPL OPERA",
+    "description": "30 m alerts flagging where vegetation cover has dropped compared with a historical baseline, which picks up wildfire scars, clearing and storm damage. Pairs well with radar change maps for validation.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2746980408-LPCLOUD",
+      "cmrShortName": "OPERA_L3_DIST-ALERT-HLS_V1",
+      "cmrConceptId": "C2746980408-LPCLOUD",
+      "gibsLayer": "OPERA_L3_DIST-ALERT-HLS_Color_Index"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "GeoTIFF"
+    ],
+    "docsUrl": "https://www.earthdata.nasa.gov/data/catalog/lpcloud-opera-l3-dist-alert-hls-v1-1",
+    "topics": [
+      "land-change",
+      "wildfire",
+      "vegetation",
+      "deforestation"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "firms-api",
+    "name": "FIRMS Active Fire API",
+    "provider": "NASA FIRMS",
+    "description": "Returns MODIS, VIIRS and Landsat fire detections as CSV for a bounding box and day range, including standard-processing archive sources (MODIS_SP, VIIRS_SNPP_SP, VIIRS_NOAA20_SP) as well as near-real-time feeds. The quickest way to get point detections for a fire calendar without handling swath files. Needs a free MAP_KEY.",
+    "access": {
+      "type": "api",
+      "endpoint": "https://firms.modaps.eosdis.nasa.gov/api/area/"
+    },
+    "auth": "api-key",
+    "browserCors": true,
+    "formats": [
+      "CSV"
+    ],
+    "docsUrl": "https://firms.modaps.eosdis.nasa.gov/api/area/",
+    "topics": [
+      "fire",
+      "wildfire",
+      "hotspots"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "modis-terra-fire-mod14",
+    "name": "MODIS/Terra Thermal Anomalies/Fire 5-Min L2 Swath 1km (MOD14) V061",
+    "provider": "NASA LP DAAC",
+    "description": "The Terra MODIS active-fire swath product, with fire masks, detection confidence and fire radiative power back to 2000. This is the long MODIS side of a MODIS-VIIRS harmonized record; the Aqua twin is MYD14.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2271754179-LPCLOUD",
+      "cmrShortName": "MOD14",
+      "cmrConceptId": "C2271754179-LPCLOUD",
+      "gibsLayer": "MODIS_Terra_Thermal_Anomalies_All"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "HDF4"
+    ],
+    "docsUrl": "https://www.earthdata.nasa.gov/data/catalog/lpcloud-mod14-061",
+    "topics": [
+      "fire",
+      "wildfire",
+      "hotspots",
+      "modis"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "viirs-snpp-fire-vnp14img",
+    "name": "VIIRS/NPP Active Fires 6-Min L2 Swath 375m (VNP14IMG) V002",
+    "provider": "NASA LP DAAC",
+    "description": "Suomi NPP VIIRS active-fire detections at 375 m, finer than MODIS and available since 2012. The overlap years with MODIS are where harmonization work happens.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2734202914-LPCLOUD",
+      "cmrShortName": "VNP14IMG",
+      "cmrConceptId": "C2734202914-LPCLOUD",
+      "gibsLayer": "VIIRS_SNPP_Thermal_Anomalies_375m_All"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "NetCDF4"
+    ],
+    "docsUrl": "https://www.earthdata.nasa.gov/data/catalog/lpcloud-vnp14img-002",
+    "topics": [
+      "fire",
+      "wildfire",
+      "hotspots",
+      "viirs"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "viirs-noaa20-fire-vj114img",
+    "name": "VIIRS/JPSS1 (NOAA-20) Active Fires 6-Min L2 Swath 375m (VJ114IMG) V002",
+    "provider": "NASA LP DAAC",
+    "description": "The same 375 m VIIRS fire algorithm run on NOAA-20, offset in orbit from Suomi NPP. Adding it increases how often each area is observed per day.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2734197957-LPCLOUD",
+      "cmrShortName": "VJ114IMG",
+      "cmrConceptId": "C2734197957-LPCLOUD",
+      "gibsLayer": "VIIRS_NOAA20_Thermal_Anomalies_375m_All"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "NetCDF4"
+    ],
+    "docsUrl": "https://www.earthdata.nasa.gov/data/catalog/lpcloud-vj114img-002",
+    "topics": [
+      "fire",
+      "wildfire",
+      "hotspots",
+      "viirs"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "gibs",
+    "name": "Global Imagery Browse Services (GIBS)",
+    "provider": "NASA ESDIS",
+    "description": "Ready-made map tiles for more than 1,000 NASA Earth layers (true color, fires, soil moisture, precipitation, night lights and more) served over WMTS with no login. The fastest way to put NASA Earth imagery on a web map or in a visualization.",
+    "access": {
+      "type": "tiles",
+      "endpoint": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/1.0.0/WMTSCapabilities.xml",
+      "gibsLayer": "MODIS_Terra_CorrectedReflectance_TrueColor"
+    },
+    "auth": "none",
+    "browserCors": true,
+    "formats": [
+      "PNG",
+      "JPEG",
+      "WMTS"
+    ],
+    "docsUrl": "https://nasa-gibs.github.io/gibs-api-docs/",
+    "topics": [
+      "imagery",
+      "visualization",
+      "maps",
+      "earth"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "smap-l3-soil-moisture",
+    "name": "SMAP Enhanced L3 Radiometer Global Daily 9 km Soil Moisture (SPL3SMP_E) V006",
+    "provider": "NASA NSIDC DAAC",
+    "description": "Daily global surface soil moisture at 9 km from the SMAP radiometer, available since 2015. Useful for judging field water stress and comparing seasons.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2938664763-NSIDC_CPRD",
+      "cmrShortName": "SPL3SMP_E",
+      "cmrConceptId": "C2938664763-NSIDC_CPRD",
+      "gibsLayer": "SMAP_L3_Passive_Enhanced_Day_Soil_Moisture"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "HDF5"
+    ],
+    "docsUrl": "https://nsidc.org/data/spl3smp_e/versions/6",
+    "topics": [
+      "soil-moisture",
+      "agriculture",
+      "water",
+      "drought"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "modis-ndvi-mod13q1",
+    "name": "MODIS/Terra Vegetation Indices 16-Day L3 Global 250m (MOD13Q1) V061",
+    "provider": "NASA LP DAAC",
+    "description": "NDVI and EVI greenness composites every 16 days at 250 m since 2000. A standard way to compare crop vigor across seasons and spot rotation effects.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C1748066515-LPCLOUD",
+      "cmrShortName": "MOD13Q1",
+      "cmrConceptId": "C1748066515-LPCLOUD",
+      "gibsLayer": "MODIS_Terra_L3_NDVI_16Day"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "HDF4"
+    ],
+    "docsUrl": "https://www.earthdata.nasa.gov/data/catalog/lpcloud-mod13q1-061",
+    "topics": [
+      "vegetation",
+      "ndvi",
+      "agriculture",
+      "trends"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "hls-landsat-l30",
+    "name": "Harmonized Landsat Sentinel-2 (HLS) Landsat 30 m (HLSL30) v2.0",
+    "provider": "NASA LP DAAC",
+    "description": "Landsat surface reflectance resampled to match Sentinel-2 on a common 30 m grid, so fields can be tracked every few days. The Sentinel-2 half is HLSS30; both come as Cloud Optimized GeoTIFFs.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2021957657-LPCLOUD",
+      "cmrShortName": "HLSL30",
+      "cmrConceptId": "C2021957657-LPCLOUD",
+      "gibsLayer": "HLS_L30_Nadir_BRDF_Adjusted_Reflectance"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "GeoTIFF"
+    ],
+    "docsUrl": "https://www.earthdata.nasa.gov/data/catalog/lpcloud-hlsl30-2.0",
+    "topics": [
+      "agriculture",
+      "land-cover",
+      "vegetation",
+      "imagery",
+      "analogs"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "gpm-imerg-daily",
+    "name": "GPM IMERG Final Precipitation L3 Daily 0.1 deg (GPM_3IMERGDF) V07",
+    "provider": "NASA GES DISC",
+    "description": "Daily global precipitation at about 10 km merged from the GPM satellite constellation and gauges, back to 2000. The Final run lags real time by a few months.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2723754864-GES_DISC",
+      "cmrShortName": "GPM_3IMERGDF",
+      "cmrConceptId": "C2723754864-GES_DISC"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "NetCDF4"
+    ],
+    "docsUrl": "https://disc.gsfc.nasa.gov/datasets/GPM_3IMERGDF_07/summary",
+    "topics": [
+      "precipitation",
+      "water",
+      "agriculture",
+      "climate",
+      "trends"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "nasa-power-api",
+    "name": "NASA POWER Agroclimatology API",
+    "provider": "NASA LaRC POWER",
+    "description": "Point and regional time series of temperature, precipitation, solar radiation, humidity and wind from satellite and model data, returned as JSON or CSV with no key. Ideal for a farm decision tool or a quick climate trend for any location.",
+    "access": {
+      "type": "api",
+      "endpoint": "https://power.larc.nasa.gov/api/temporal/daily/point"
+    },
+    "auth": "none",
+    "browserCors": true,
+    "formats": [
+      "JSON",
+      "CSV",
+      "NetCDF"
+    ],
+    "docsUrl": "https://power.larc.nasa.gov/docs/services/api/",
+    "topics": [
+      "agriculture",
+      "climate",
+      "weather",
+      "solar",
+      "trends"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "gistemp",
+    "name": "GISS Surface Temperature Analysis (GISTEMP v4)",
+    "provider": "NASA GISS",
+    "description": "Monthly global and regional surface temperature anomalies since 1880, downloadable as small CSV tables. A clean starting series for trend and significance testing.",
+    "access": {
+      "type": "download",
+      "endpoint": "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.csv"
+    },
+    "auth": "none",
+    "browserCors": false,
+    "formats": [
+      "CSV",
+      "NetCDF"
+    ],
+    "docsUrl": "https://data.giss.nasa.gov/gistemp/",
+    "topics": [
+      "temperature",
+      "climate",
+      "trends"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "grace-mascon",
+    "name": "JPL GRACE and GRACE-FO Mascon Water Height, Coastal Resolution Improvement (RL06.3 v04)",
+    "provider": "NASA PO.DAAC / JPL",
+    "description": "Monthly changes in total water storage (groundwater, ice, soil water) from the GRACE and GRACE-FO gravity missions since 2002, in a single NetCDF file. Shows long-term drying, ice loss and aquifer depletion.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C3195527175-POCLOUD",
+      "cmrShortName": "TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4",
+      "cmrConceptId": "C3195527175-POCLOUD",
+      "gibsLayer": "GRACE_Tellus_Liquid_Water_Equivalent_Thickness_Mascon_CRI"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "NetCDF"
+    ],
+    "docsUrl": "https://podaac.jpl.nasa.gov/dataset/TELLUS_GRAC-GRFO_MASCON_CRI_GRID_RL06.3_V4",
+    "topics": [
+      "water",
+      "groundwater",
+      "ice",
+      "trends",
+      "climate"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "merra2-monthly",
+    "name": "MERRA-2 Monthly Single-Level Diagnostics (M2TMNXSLV) V5.12.4",
+    "provider": "NASA GES DISC / GMAO",
+    "description": "Monthly gridded reanalysis of near-surface temperature, humidity, wind and pressure since 1980. Gives a complete, gap-free record for trend analysis where observations are sparse.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C1276812859-GES_DISC",
+      "cmrShortName": "M2TMNXSLV",
+      "cmrConceptId": "C1276812859-GES_DISC"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "NetCDF4"
+    ],
+    "docsUrl": "https://disc.gsfc.nasa.gov/datasets/M2TMNXSLV_5.12.4/summary",
+    "topics": [
+      "climate",
+      "temperature",
+      "reanalysis",
+      "trends"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "giovanni",
+    "name": "Giovanni",
+    "provider": "NASA GES DISC",
+    "description": "Browser tool that makes time series, maps, Hovmoller plots and correlations from thousands of NASA Earth variables without downloading files. Good for a first look at trends before writing code. Uses Earthdata Login.",
+    "access": {
+      "type": "web",
+      "endpoint": "https://giovanni.gsfc.nasa.gov/giovanni/"
+    },
+    "auth": "earthdata-login",
+    "browserCors": false,
+    "formats": [
+      "PNG",
+      "NetCDF",
+      "CSV"
+    ],
+    "docsUrl": "https://www.earthdata.nasa.gov/data/tools/giovanni",
+    "topics": [
+      "trends",
+      "climate",
+      "visualization",
+      "earth"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "srtm-elevation",
+    "name": "NASA SRTM Global 1 arc second (SRTMGL1) V003",
+    "provider": "NASA LP DAAC",
+    "description": "About 30 m elevation for land between 60N and 56S from the Shuttle Radar Topography Mission. Useful for finding terrain (craters, lava fields, canyons) that resembles lunar or Martian sites.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2763266360-LPCLOUD",
+      "cmrShortName": "SRTMGL1",
+      "cmrConceptId": "C2763266360-LPCLOUD"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "HGT (zipped)"
+    ],
+    "docsUrl": "https://www.earthdata.nasa.gov/data/catalog/lpcloud-srtmgl1-003",
+    "topics": [
+      "elevation",
+      "terrain",
+      "analogs"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "moon-trek-wac-mosaic",
+    "name": "Moon Trek WMTS: LRO WAC Global Mosaic v2",
+    "provider": "NASA Solar System Treks (JPL)",
+    "description": "Global LROC Wide Angle Camera image mosaic of the Moon served as standard WMTS tiles with open CORS, plus hundreds of other Moon Trek layers listed in the Trek API docs. A drop-in basemap for any lunar web app.",
+    "access": {
+      "type": "tiles",
+      "endpoint": "https://trek.nasa.gov/tiles/Moon/EQ/LRO_WAC_Mosaic_Global_303ppd_v02/1.0.0/WMTSCapabilities.xml"
+    },
+    "auth": "none",
+    "browserCors": true,
+    "formats": [
+      "JPEG",
+      "WMTS"
+    ],
+    "docsUrl": "https://trek.nasa.gov/tiles/apidoc/trekAPI.html?body=moon",
+    "topics": [
+      "moon",
+      "imagery",
+      "maps",
+      "lro"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "moon-trek-south-pole",
+    "name": "Moon Trek WMTS: South Pole Illumination and Earth Visibility",
+    "provider": "NASA Solar System Treks (JPL)",
+    "description": "South polar tile layers from LRO: WAC percentage-based illumination (WAC_POLE_ILL_PCT_SOUTH_100M) and LOLA average Earth visibility (AVGVISIB_85S_060M_201608_EARTH_SP). Together they show where a lander gets sunlight for power and line of sight to Earth for communication.",
+    "access": {
+      "type": "tiles",
+      "endpoint": "https://trek.nasa.gov/tiles/Moon/SP/WAC_POLE_ILL_PCT_SOUTH_100M/1.0.0/WMTSCapabilities.xml"
+    },
+    "auth": "none",
+    "browserCors": true,
+    "formats": [
+      "PNG",
+      "WMTS"
+    ],
+    "docsUrl": "https://trek.nasa.gov/tiles/apidoc/trekAPI.html?body=moon",
+    "topics": [
+      "moon",
+      "south-pole",
+      "illumination",
+      "communications",
+      "landing-sites"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "lola-ode-rest",
+    "name": "LRO LOLA Gridded Topography via PDS Orbital Data Explorer REST API",
+    "provider": "NASA PDS Geosciences Node (Washington University in St. Louis)",
+    "description": "A REST API for finding PDS products by mission, instrument and product type; for example LOLA gridded elevation (GDRDEM) of the Moon. Returns product lists with download links to the PDS archive.",
+    "access": {
+      "type": "api",
+      "endpoint": "https://oderest.rsl.wustl.edu/live2/?query=products&target=moon&ihid=LRO&iid=LOLA&pt=GDRDEM&output=json"
+    },
+    "auth": "none",
+    "browserCors": true,
+    "formats": [
+      "JSON",
+      "PDS IMG",
+      "XML"
+    ],
+    "docsUrl": "https://oderest.rsl.wustl.edu/",
+    "topics": [
+      "moon",
+      "elevation",
+      "terrain",
+      "lro",
+      "pds"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "jpl-horizons",
+    "name": "JPL Horizons API",
+    "provider": "NASA JPL Solar System Dynamics",
+    "description": "Computes positions of the Sun, Earth, planets and spacecraft as seen from any place and time, including a point on the lunar surface. Returns azimuth and elevation directly, which is exactly what solar power and Earth-communication windows need.",
+    "access": {
+      "type": "api",
+      "endpoint": "https://ssd.jpl.nasa.gov/api/horizons.api"
+    },
+    "auth": "none",
+    "browserCors": false,
+    "formats": [
+      "JSON",
+      "Text"
+    ],
+    "docsUrl": "https://ssd-api.jpl.nasa.gov/doc/horizons.html",
+    "topics": [
+      "ephemeris",
+      "moon",
+      "sun",
+      "mission-design",
+      "orbits"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "naif-spice",
+    "name": "NAIF SPICE Toolkit and Kernels",
+    "provider": "NASA JPL NAIF",
+    "description": "The toolkit and data files (kernels) NASA missions use for geometry: where bodies and spacecraft are, which way they point, and lighting angles. More setup than Horizons, but runs offline and at scale.",
+    "access": {
+      "type": "download",
+      "endpoint": "https://naif.jpl.nasa.gov/pub/naif/generic_kernels/"
+    },
+    "auth": "none",
+    "browserCors": false,
+    "formats": [
+      "SPICE kernels"
+    ],
+    "docsUrl": "https://naif.jpl.nasa.gov/naif/toolkit.html",
+    "topics": [
+      "ephemeris",
+      "geometry",
+      "mission-design",
+      "orbits"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "lroc-images",
+    "name": "LROC Image Archive and Featured Sites",
+    "provider": "LROC Science Operations Center (ASU) for NASA LRO",
+    "description": "Lunar Reconnaissance Orbiter Camera images, including featured close-ups of Apollo, Surveyor, Luna, Lunokhod and Ranger sites and recent spacecraft impact sites where hardware or its traces are visible. Strong material for stories about equipment left on the Moon.",
+    "access": {
+      "type": "web",
+      "endpoint": "https://lroc.im-ldi.com/images"
+    },
+    "auth": "none",
+    "browserCors": false,
+    "formats": [
+      "JPEG",
+      "PDS IMG"
+    ],
+    "docsUrl": "https://www.lroc.asu.edu/featured_sites",
+    "topics": [
+      "moon",
+      "imagery",
+      "landing-sites",
+      "history",
+      "lro"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "mars-trek",
+    "name": "Mars Trek WMTS Layers (CTX Global Mosaic, MOLA)",
+    "provider": "NASA Solar System Treks (JPL)",
+    "description": "Mars basemaps as WMTS tiles with open CORS, including the global 5 m CTX mosaic (CTX_beta01_uncontrolled_5m_Caltech) and MOLA color hillshade (Mars_MGS_MOLA_ClrShade_merge_global_463m). Stack them to plan a route and read terrain.",
+    "access": {
+      "type": "tiles",
+      "endpoint": "https://trek.nasa.gov/tiles/Mars/EQ/CTX_beta01_uncontrolled_5m_Caltech/1.0.0/WMTSCapabilities.xml"
+    },
+    "auth": "none",
+    "browserCors": true,
+    "formats": [
+      "PNG",
+      "JPEG",
+      "WMTS"
+    ],
+    "docsUrl": "https://trek.nasa.gov/tiles/apidoc/trekAPI.html?body=mars",
+    "topics": [
+      "mars",
+      "imagery",
+      "elevation",
+      "maps",
+      "analogs"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "hirise",
+    "name": "HiRISE Images (MRO)",
+    "provider": "University of Arizona HiRISE team / NASA PDS",
+    "description": "Mars Reconnaissance Orbiter images at roughly 25 to 50 cm per pixel, sharp enough to see boulders, rover tracks and landers. The PDS archive holds full-resolution RDR products and digital terrain models (DTM).",
+    "access": {
+      "type": "download",
+      "endpoint": "https://hirise-pds.lpl.arizona.edu/PDS/"
+    },
+    "auth": "none",
+    "browserCors": false,
+    "formats": [
+      "JPEG2000",
+      "PDS IMG"
+    ],
+    "docsUrl": "https://www.uahirise.org/",
+    "topics": [
+      "mars",
+      "imagery",
+      "terrain",
+      "landing-sites",
+      "history"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "irsa-spherex",
+    "name": "SPHEREx Quick Release Images at IRSA (TAP / SIA)",
+    "provider": "NASA IPAC IRSA",
+    "description": "All-sky spectral images from SPHEREx, searchable through the spherex.obscore TAP table and the IRSA SIA service by position and time. Repeat visits of the same patch of sky are what reveal moving asteroids, comets and nearby brown dwarfs.",
+    "access": {
+      "type": "tap",
+      "endpoint": "https://irsa.ipac.caltech.edu/TAP/sync"
+    },
+    "auth": "none",
+    "browserCors": false,
+    "formats": [
+      "FITS",
+      "VOTable",
+      "CSV"
+    ],
+    "docsUrl": "https://irsa.ipac.caltech.edu/Missions/spherex.html",
+    "topics": [
+      "astronomy",
+      "infrared",
+      "spherex",
+      "asteroids",
+      "brown-dwarfs"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "jpl-sbdb",
+    "name": "JPL Small-Body Database API",
+    "provider": "NASA JPL Solar System Dynamics",
+    "description": "Orbit elements, physical data and discovery details for any asteroid or comet as JSON. Use it to label moving objects, or to give a mission-design game real target bodies.",
+    "access": {
+      "type": "api",
+      "endpoint": "https://ssd-api.jpl.nasa.gov/sbdb.api"
+    },
+    "auth": "none",
+    "browserCors": false,
+    "formats": [
+      "JSON"
+    ],
+    "docsUrl": "https://ssd-api.jpl.nasa.gov/doc/sbdb.html",
+    "topics": [
+      "asteroids",
+      "comets",
+      "orbits",
+      "mission-design"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "nasa-osdr",
+    "name": "NASA Open Science Data Repository (OSDR) Search API",
+    "provider": "NASA OSDR (Ames)",
+    "description": "Public spaceflight biology studies, including GeneLab omics and ALSDA physiology data, on bone loss, muscle, heart, immune and radiation effects. The search API returns study metadata as JSON; a separate Biological Data API supports detailed metadata queries.",
+    "access": {
+      "type": "api",
+      "endpoint": "https://osdr.nasa.gov/osdr/data/search"
+    },
+    "auth": "none",
+    "browserCors": false,
+    "formats": [
+      "JSON",
+      "CSV"
+    ],
+    "docsUrl": "https://osdr-tutorials.readthedocs.io/en/latest/pages/guides/biological_data_api.html",
+    "topics": [
+      "astronaut-health",
+      "biology",
+      "radiation",
+      "bone",
+      "spaceflight"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "nasa-lsda",
+    "name": "NASA Life Sciences Data Archive (via NASA Life Sciences Portal)",
+    "provider": "NASA Johnson Space Center",
+    "description": "Catalog of human and animal research from NASA missions, with study descriptions and measured variables. Some datasets are public, while privacy-protected astronaut data are available only through a formal data request.",
+    "access": {
+      "type": "web",
+      "endpoint": "https://nlsp.nasa.gov/explore/lsdahome"
+    },
+    "auth": "none",
+    "browserCors": true,
+    "formats": [
+      "Web"
+    ],
+    "docsUrl": "https://nlsp.nasa.gov/explore/lsdahome",
+    "topics": [
+      "astronaut-health",
+      "human-research",
+      "physiology"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "donki-space-weather",
+    "name": "DONKI Space Weather Event API",
+    "provider": "NASA CCMC (Goddard)",
+    "description": "JSON records of solar flares, coronal mass ejections and solar energetic particle events, the space weather that drives astronaut radiation exposure. Queries are limited to 60-day windows.",
+    "access": {
+      "type": "api",
+      "endpoint": "https://ccmc.gsfc.nasa.gov/DONKI-API/get/SEP"
+    },
+    "auth": "none",
+    "browserCors": true,
+    "formats": [
+      "JSON"
+    ],
+    "docsUrl": "https://ccmc.gsfc.nasa.gov/tools/DONKI/",
+    "topics": [
+      "space-weather",
+      "radiation",
+      "astronaut-health",
+      "sun"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "nasa-psi",
+    "name": "Physical Sciences Informatics (PSI) Repository",
+    "provider": "NASA Biological and Physical Sciences",
+    "description": "Archive of microgravity physical-science experiments from the ISS and earlier flights, with a Combustion Science research area that includes spacecraft fire safety studies. Investigations include descriptions, publications and data files.",
+    "access": {
+      "type": "web",
+      "endpoint": "https://psi.nasa.gov/physci/repo/search?q=&data_source=psi&data_type=investigation"
+    },
+    "auth": "none",
+    "browserCors": false,
+    "formats": [
+      "Web"
+    ],
+    "docsUrl": "https://science.nasa.gov/biological-physical/data/",
+    "topics": [
+      "combustion",
+      "microgravity",
+      "fire-safety",
+      "iss"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "ntrs-api",
+    "name": "NASA Technical Reports Server (NTRS) API",
+    "provider": "NASA STI Program",
+    "description": "Search API over NASA technical reports, conference papers and journal articles, many with full-text PDFs. Over a thousand records match microgravity combustion, and it also covers mission design and spaceflight health.",
+    "access": {
+      "type": "api",
+      "endpoint": "https://ntrs.nasa.gov/api/citations/search"
+    },
+    "auth": "none",
+    "browserCors": false,
+    "formats": [
+      "JSON",
+      "PDF"
+    ],
+    "docsUrl": "https://ntrs.nasa.gov/api/openapi/",
+    "topics": [
+      "literature",
+      "combustion",
+      "mission-design",
+      "astronaut-health"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "nasa-image-library",
+    "name": "NASA Image and Video Library API",
+    "provider": "NASA",
+    "description": "Search API over NASA's public photos, videos and audio, with no key and open CORS. Good for mission artwork, historical hardware photos and game assets.",
+    "access": {
+      "type": "api",
+      "endpoint": "https://images-api.nasa.gov/search"
+    },
+    "auth": "none",
+    "browserCors": true,
+    "formats": [
+      "JSON",
+      "JPEG",
+      "MP4"
+    ],
+    "docsUrl": "https://images.nasa.gov/docs/images.nasa.gov_api_docs.pdf",
+    "topics": [
+      "imagery",
+      "media",
+      "history",
+      "outreach",
+      "games"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "nasa-svs",
+    "name": "NASA Scientific Visualization Studio (SVS) API",
+    "provider": "NASA Goddard SVS",
+    "description": "Search and page APIs for thousands of NASA science visualizations, with links to frames, movies and data-driven animations of sea ice, temperature, carbon and more. A rich source of visuals to pair with sound.",
+    "access": {
+      "type": "api",
+      "endpoint": "https://svs.gsfc.nasa.gov/api/search/"
+    },
+    "auth": "none",
+    "browserCors": false,
+    "formats": [
+      "JSON",
+      "PNG",
+      "MP4"
+    ],
+    "docsUrl": "https://svs.gsfc.nasa.gov/help/",
+    "topics": [
+      "visualization",
+      "earth",
+      "outreach",
+      "climate"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "earth-information-center",
+    "name": "Earth Information Center (Earth.gov)",
+    "provider": "U.S. Earth Information Center",
+    "description": "Earth.gov hosts the Earth Information Center, which brings together federal Earth science data and stories on climate, water, fire, sea level and more. Use it to pick the themes and visuals a sonification should follow.",
+    "access": {
+      "type": "web",
+      "endpoint": "https://earth.gov/"
+    },
+    "auth": "none",
+    "browserCors": true,
+    "formats": [
+      "Web"
+    ],
+    "docsUrl": "https://earth.gov/",
+    "topics": [
+      "earth",
+      "climate",
+      "visualization",
+      "outreach"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "nssdca-catalog",
+    "name": "NSSDCA Master Catalog",
+    "provider": "NASA Space Science Data Coordinated Archive (Goddard)",
+    "description": "Reference entries for spacecraft and experiments, with launch dates, mission outcomes and pages such as the Apollo landing-site list. A reliable fact source for stories about hardware left on the Moon and Mars.",
+    "access": {
+      "type": "web",
+      "endpoint": "https://nssdc.gsfc.nasa.gov/nmc/"
+    },
+    "auth": "none",
+    "browserCors": false,
+    "formats": [
+      "Web"
+    ],
+    "docsUrl": "https://nssdc.gsfc.nasa.gov/planetary/lunar/apolloland.html",
+    "topics": [
+      "history",
+      "spacecraft",
+      "moon",
+      "mars"
+    ],
+    "checked": "2026-10-04"
+  },
+  {
+    "id": "nasa-3d-resources",
+    "name": "NASA 3D Resources",
+    "provider": "NASA (GitHub nasa/NASA-3D-Resources)",
+    "description": "Free 3D models of NASA spacecraft, landers, rovers and asteroids, mostly as STL and GLB files. Ready-made assets for games, trainers and storytelling pages.",
+    "access": {
+      "type": "download",
+      "endpoint": "https://api.github.com/repos/nasa/NASA-3D-Resources/contents/3D%20Models"
+    },
+    "auth": "none",
+    "browserCors": true,
+    "formats": [
+      "GLB",
+      "STL",
+      "PNG"
+    ],
+    "docsUrl": "https://github.com/nasa/NASA-3D-Resources",
+    "topics": [
+      "3d-models",
+      "games",
+      "outreach",
+      "spacecraft"
+    ],
+    "checked": "2026-10-04"
+  }
+]

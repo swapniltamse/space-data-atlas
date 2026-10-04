@@ -1,0 +1,19 @@
+{
+  "source": {
+    "title": "NASA Announces 2025 International Space Apps Challenge Global Winners",
+    "url": "https://www.nasa.gov/learning-resources/stem-engagement-at-nasa/nasa-announces-2025-international-space-apps-challenge-global-winners/",
+    "checked": "2026-10-04"
+  },
+  "winners": [
+    { "id": "2025-spacegenes", "year": 2025, "award": "Best Use of Science", "team": "SpaceGenes+", "location": "Germany", "challenge": "Build a Space Biology Knowledge Engine", "relatedTo": ["astronaut-health-monitoring", "flame-in-freefall"] },
+    { "id": "2025-resonant-exoplanets", "year": 2025, "award": "Best Use of Data", "team": "Resonant Exoplanets", "location": "United States", "challenge": "A World Away: Hunting for Exoplanets with AI", "relatedTo": ["planet-x-and-spherex"] },
+    { "id": "2025-twisters", "year": 2025, "award": "Best Use of Technology", "team": "Twisters", "location": "Mexico", "challenge": "Will It Rain on My Parade?", "relatedTo": ["earth-system-trend-detective"] },
+    { "id": "2025-astro-sweepers", "year": 2025, "award": "Galactic Impact", "team": "Astro Sweepers", "location": "Universal Event", "challenge": "Commercializing LEO", "relatedTo": ["space-mission-design-game"] },
+    { "id": "2025-pureflow", "year": 2025, "award": "Best Mission Concept", "team": "PureFlow", "location": "Brazil", "challenge": "Your Home in Space: The Habitat Layout Creator", "relatedTo": ["junior-astronaut-mission-trainer", "space-mission-design-game"] },
+    { "id": "2025-photonics-odyssey", "year": 2025, "award": "Most Inspirational", "team": "Photonics Odyssey", "location": "India", "challenge": "Commercializing LEO", "relatedTo": ["space-mission-design-game"] },
+    { "id": "2025-hercode-space", "year": 2025, "award": "Best Use of Storytelling", "team": "HerCode Space", "location": "Universal Event", "challenge": "Stellar Stories: Space Weather Through the Eyes of Earthlings", "relatedTo": ["abandoned-but-not-forgotten", "earth-information-jukebox"] },
+    { "id": "2025-gaia-leo", "year": 2025, "award": "Global Connection", "team": "Gaia+LEO", "location": "United States", "challenge": "Commercializing LEO", "relatedTo": ["space-mission-design-game"] },
+    { "id": "2025-zumorroda-x", "year": 2025, "award": "Art & Technology", "team": "Zumorroda-X", "location": "Egypt", "challenge": "NASA Farm Navigators", "relatedTo": ["field-shift-adapting-farms", "junior-astronaut-mission-trainer"] },
+    { "id": "2025-quenaris", "year": 2025, "award": "Local Impact", "team": "QUEÑARIS", "location": "Peru", "challenge": "BloomWatch", "relatedTo": ["field-shift-adapting-farms", "earth-system-trend-detective"] }
+  ]
+}
