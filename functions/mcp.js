@@ -169,11 +169,15 @@ export async function onRequest({ request }) {
       status: 405, headers: { Allow: "POST, OPTIONS", "Content-Type": "text/plain", ...CORS },
     });
   const ip = request.headers.get("CF-Connecting-IP") || "local";
-  if (limited(ip)) return json(rpcError(null, -32000, "Rate limit: 60 requests per minute. Slow down and retry."), 429);
   let body;
   try { body = await request.json(); } catch { return json(rpcError(null, -32700, "Parse error"), 400); }
+  // Every message in a batch counts toward the limit, so a batch can't multiply outbound CMR calls.
+  const msgs = Array.isArray(body) ? body : [body];
+  if (msgs.length > 10) return json(rpcError(null, -32600, "Batches are limited to 10 messages."), 400);
+  if (msgs.map(() => limited(ip)).some(Boolean)) return json(rpcError(null, -32000, "Rate limit: 60 calls per minute. Slow down and retry."), 429);
   if (Array.isArray(body)) {
-    const res = (await Promise.all(body.map(handle))).filter(Boolean);
+    const res = [];
+    for (const m of body) { const r = await handle(m); if (r) res.push(r); } // sequential, not fanned out
     return res.length ? json(res) : new Response(null, { status: 202, headers: CORS });
   }
   const res = await handle(body);

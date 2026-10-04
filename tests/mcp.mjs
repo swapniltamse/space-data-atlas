@@ -34,6 +34,11 @@ const bad = await rpc("tools/call", { name: "get_challenge", arguments: { slug: 
 check("bad slug returns isError", bad.result?.isError === true, text(bad));
 const badBox = await rpc("tools/call", { name: "search_nasa_collections", arguments: { keyword: "x", boundingBox: "1,2" } });
 check("bad bbox returns isError", badBox.result?.isError === true);
+const batch = (k) => fetch(MCP, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(Array.from({ length: k }, (_, i) => ({ jsonrpc: "2.0", id: 100 + i, method: "ping" }))) });
+const b2 = await batch(2);
+check("batch of 2 answered", b2.status === 200 && (await b2.json()).length === 2);
+const b11 = await batch(11);
+check("batch over 10 rejected", b11.status === 400, String(b11.status));
 const get = await fetch(MCP);
 check("GET returns 405", get.status === 405);
 console.log(failures ? `\nmcp: ${failures} failure(s)` : "\nmcp: OK");
