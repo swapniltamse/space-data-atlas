@@ -28,7 +28,7 @@ const Starter = z.object({
   id: z.string(), datasetId: z.string(), lang: z.enum(["python", "javascript"]), title: z.string(),
   runsIn: z.enum(["browser", "node", "python"]), needsLogin: z.boolean(), code: z.string().min(20),
 }).passthrough();
-const MapEntry = z.object({ datasetIds: z.array(z.string()).min(1).max(6), firstSteps: z.array(z.string()).length(3), note: z.string().optional() }).passthrough();
+const MapEntry = z.object({ datasetIds: z.array(z.string()).min(1).max(6), firstSteps: z.array(z.string()).length(3), note: z.string().optional(), officialResources: z.array(z.object({ title: z.string(), url: Url })).optional() }).passthrough();
 
 const parse = (schema, items, label) =>
   items.forEach((x, i) => {

@@ -243,6 +243,7 @@ function challengePage(c) {
 <p class="lede">${esc(c.summary)}</p>
 <p><a class="official" href="${esc(c.officialUrl)}">Read the official challenge on spaceappschallenge.org</a></p>
 ${c.note ? `<p class="note">${esc(c.note)}</p>` : ""}
+${c.officialResources?.length ? `<section><h2>Official resources</h2><p class="muted">Listed in the full challenge statement.</p><ul class="past">${c.officialResources.map((r) => `<li><a href="${esc(r.url)}">${esc(r.title)}</a></li>`).join("")}</ul></section>` : ""}
 <section><h2>Your first hour</h2><ol class="steps">${c.firstSteps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol></section>
 <section><h2>Suggested datasets</h2><p class="muted">In order of how useful they are likely to be. These are suggestions, not the official resource list.</p><div class="ds-grid">${ds
       .map((d) => datasetCard(d))

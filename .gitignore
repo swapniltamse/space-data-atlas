@@ -6,3 +6,5 @@ functions/_lib/
 tests/out-*.png
 .dev.vars
 .wrangler-dev.log
+backups/
+.claude.json*
