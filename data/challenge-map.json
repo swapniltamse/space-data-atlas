@@ -1,6 +1,13 @@
 {
   "abandoned-but-not-forgotten": {
-    "datasetIds": ["lroc-images", "nssdca-catalog", "nasa-image-library", "moon-trek-wac-mosaic", "hirise"],
+    "datasetIds": [
+      "moon-manmade-catalogue",
+      "lroc-images",
+      "apollo-surface-journal",
+      "alsep-arcsav",
+      "hirise",
+      "nssdca-catalog"
+    ],
     "firstSteps": [
       "Pick five to ten pieces of hardware and confirm each mission's facts in the NSSDCA catalog.",
       "Pull an LROC featured-site image (or a HiRISE image for Mars) showing each piece where it sits today.",
@@ -9,7 +16,14 @@
     "note": "The official resource list arrives Oct 28; the Moon side is far better covered by public imagery than deep space."
   },
   "earth-system-trend-detective": {
-    "datasetIds": ["gistemp", "grace-mascon", "merra2-monthly", "giovanni", "gpm-imerg-daily"],
+    "datasetIds": [
+      "gistemp",
+      "grace-mascon",
+      "merra2-monthly",
+      "tempo-no2",
+      "pace-oci-bgc",
+      "giovanni"
+    ],
     "firstSteps": [
       "Run the GISTEMP starter to get a clean annual series and a baseline trend in minutes.",
       "Explore candidate variables in Giovanni before downloading anything.",
@@ -18,7 +32,14 @@
     "note": "Giovanni and the gridded files need a free Earthdata Login; register before the hackathon starts."
   },
   "junior-astronaut-mission-trainer": {
-    "datasetIds": ["moon-trek-south-pole", "donki-space-weather", "nasa-3d-resources", "nasa-image-library", "mars-trek"],
+    "datasetIds": [
+      "bvad-life-support",
+      "msl-rad",
+      "moon-trek-south-pole",
+      "donki-space-weather",
+      "nasa-3d-resources",
+      "nasa-image-library"
+    ],
     "firstSteps": [
       "List the resources your outpost tracks (power, oxygen, water, food, radiation dose) and the rules that link them.",
       "Use the Moon Trek illumination layer and DONKI particle events as real inputs for power and radiation.",
@@ -27,7 +48,14 @@
     "note": "No NASA dataset gives life-support numbers directly; cite NTRS reports for any figures you use."
   },
   "clps-lunar-mission-browser": {
-    "datasetIds": ["jpl-horizons", "moon-trek-south-pole", "lola-ode-rest", "moon-trek-wac-mosaic", "naif-spice"],
+    "datasetIds": [
+      "jpl-horizons",
+      "pgda-lunar-polar-illumination",
+      "moon-trek-south-pole",
+      "lola-ode-rest",
+      "shadowcam-psr",
+      "naif-spice"
+    ],
     "firstSteps": [
       "Run the Horizons starter to get Sun and Earth elevation for one south pole site.",
       "Overlay the Moon Trek illumination and Earth visibility layers to shortlist candidate sites.",
@@ -36,7 +64,13 @@
     "note": "Horizons gives elevation over a smooth horizon; terrain shadowing needs LOLA elevation data."
   },
   "astronaut-health-monitoring": {
-    "datasetIds": ["nasa-osdr", "donki-space-weather", "nasa-lsda", "ntrs-api"],
+    "datasetIds": [
+      "nasa-osdr",
+      "msl-rad",
+      "donki-space-weather",
+      "nasa-lsda",
+      "ntrs-api"
+    ],
     "firstSteps": [
       "Search OSDR for bone, heart and radiation studies to learn which indicators researchers measure.",
       "Use DONKI particle events to simulate when a crew's radiation risk rises.",
@@ -45,7 +79,13 @@
     "note": "Individual astronaut health records are privacy-protected; plan on simulated crew data built from published ranges."
   },
   "dancing-with-the-sars": {
-    "datasetIds": ["nisar-l2-gcov", "nisar-l2-gunw", "opera-rtc-s1", "opera-dswx-hls", "opera-dist-alert-hls"],
+    "datasetIds": [
+      "nisar-l2-gcov",
+      "nisar-l2-gunw",
+      "opera-rtc-s1",
+      "opera-dswx-hls",
+      "opera-dist-alert-hls"
+    ],
     "firstSteps": [
       "Create an Earthdata Login and run the NISAR GCOV starter for your area of interest.",
       "Preview coverage in the GIBS NISAR layer or ASF Search before downloading any large HDF5 files.",
@@ -54,7 +94,14 @@
     "note": "NISAR products in CMR are labeled provisional or beta; Sentinel-1 OPERA RTC is the validated fallback."
   },
   "field-shift-adapting-farms": {
-    "datasetIds": ["nasa-power-api", "smap-l3-soil-moisture", "hls-landsat-l30", "modis-ndvi-mod13q1", "gpm-imerg-daily"],
+    "datasetIds": [
+      "nasa-power-api",
+      "smap-l3-soil-moisture",
+      "hls-landsat-l30",
+      "ecostress-et",
+      "oco-sif",
+      "gpm-imerg-daily"
+    ],
     "firstSteps": [
       "Run the POWER starter for your farm's coordinates to get rainfall, temperature and sunlight.",
       "Add SMAP soil moisture and MODIS NDVI to compare dry and wet seasons.",
@@ -63,7 +110,10 @@
     "note": "Local soil and crop data are not NASA products; plan on sourcing them from a partner or a public soil survey."
   },
   "flame-in-freefall": {
-    "datasetIds": ["ntrs-api", "nasa-psi"],
+    "datasetIds": [
+      "ntrs-api",
+      "nasa-psi"
+    ],
     "firstSteps": [
       "Run the NTRS starter and save a corpus of microgravity combustion and fire safety papers.",
       "Browse the PSI repository's Combustion Science investigations and note which include raw data.",
@@ -72,7 +122,13 @@
     "note": "Coverage is thin: PSI has no documented public API, so expect manual downloads. The official resource list arrives Oct 28."
   },
   "modis-viirs-hot-spots": {
-    "datasetIds": ["firms-api", "modis-terra-fire-mod14", "viirs-snpp-fire-vnp14img", "viirs-noaa20-fire-vj114img", "gibs"],
+    "datasetIds": [
+      "firms-api",
+      "modis-terra-fire-mod14",
+      "viirs-snpp-fire-vnp14img",
+      "viirs-noaa20-fire-vj114img",
+      "gibs"
+    ],
     "firstSteps": [
       "Request a free FIRMS MAP_KEY and pull MODIS_SP and VIIRS_SNPP_SP detections for one test area.",
       "Compare detection counts in the 2012 onward overlap years to see how the two sensors differ.",
@@ -80,7 +136,14 @@
     ]
   },
   "earth-analogs-moon-mars": {
-    "datasetIds": ["hls-landsat-l30", "srtm-elevation", "moon-trek-south-pole", "mars-trek", "lola-ode-rest"],
+    "datasetIds": [
+      "emit-mineralogy",
+      "srtm-elevation",
+      "hls-landsat-l30",
+      "crism-mtrdr",
+      "mars-trek",
+      "diviner-polar-temperature"
+    ],
     "firstSteps": [
       "Pick a target base site on the Moon or Mars and describe its terrain, lighting and surface from Trek layers.",
       "Turn that description into measurable Earth criteria (slope, elevation, vegetation, temperature).",
@@ -88,7 +151,14 @@
     ]
   },
   "martian-map": {
-    "datasetIds": ["mars-trek", "hirise", "nasa-image-library"],
+    "datasetIds": [
+      "mars-trek",
+      "hirise",
+      "crism-mtrdr",
+      "ames-mars-climate",
+      "msl-rad",
+      "nasa-image-library"
+    ],
     "firstSteps": [
       "Load the Mars Trek CTX mosaic and MOLA hillshade layers into a web map.",
       "Pick a route and pull HiRISE images and terrain models along it.",
@@ -97,7 +167,11 @@
     "note": "The official resource list arrives Oct 28; THEMIS day and night thermal-infrared mosaics are also in Mars Trek."
   },
   "planet-x-and-spherex": {
-    "datasetIds": ["irsa-spherex", "jpl-sbdb", "jpl-horizons"],
+    "datasetIds": [
+      "irsa-spherex",
+      "jpl-sbdb",
+      "jpl-horizons"
+    ],
     "firstSteps": [
       "Run the SPHEREx starter to list repeat visits of one patch of sky.",
       "Use Horizons to predict where a known asteroid should appear in those images.",
@@ -106,7 +180,14 @@
     "note": "SPHEREx data are Quick Release products and will change; check the IRSA SPHEREx page for the latest release."
   },
   "space-mission-design-game": {
-    "datasetIds": ["jpl-sbdb", "jpl-horizons", "nasa-3d-resources", "ntrs-api", "nasa-image-library"],
+    "datasetIds": [
+      "gmat",
+      "jpl-horizons",
+      "jpl-sbdb",
+      "nasa-3d-resources",
+      "ntrs-api",
+      "nasa-image-library"
+    ],
     "firstSteps": [
       "Define the trade-offs your game scores (mass, power, budget, data return) and keep the first version small.",
       "Use SBDB and Horizons so targets and travel distances come from real orbits.",
@@ -115,7 +196,14 @@
     "note": "Real costs and masses are scattered across mission reports; cite the NTRS sources you use."
   },
   "earth-information-jukebox": {
-    "datasetIds": ["nasa-svs", "earth-information-center", "gibs", "gistemp", "nasa-power-api"],
+    "datasetIds": [
+      "nasa-svs",
+      "earth-information-center",
+      "nasa-sonifications",
+      "gibs",
+      "gistemp",
+      "nasa-power-api"
+    ],
     "firstSteps": [
       "Browse Earth.gov and the SVS to pick two or three visualizations with a clear story.",
       "Find a numeric series behind each one (GISTEMP, POWER, or GIBS layers) to drive the sound.",

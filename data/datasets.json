@@ -1000,5 +1000,420 @@
       "spacecraft"
     ],
     "checked": "2026-10-04"
+  },
+  {
+    "id": "moon-manmade-catalogue",
+    "name": "Catalogue of Manmade Material on the Moon",
+    "provider": "NASA History Office",
+    "description": "A NASA history-office catalogue of 796 items left on the Moon, from whole landers and rovers to small tools, with mission and location for each. The single best starting list for stories about hardware left behind.",
+    "access": {
+      "type": "download",
+      "endpoint": "https://www.nasa.gov/wp-content/uploads/2024/02/final-catalogue-of-manmade-material-on-the-moon.pdf"
+    },
+    "auth": "none",
+    "browserCors": null,
+    "formats": [
+      "PDF"
+    ],
+    "docsUrl": "https://www.nasa.gov/wp-content/uploads/2024/02/final-catalogue-of-manmade-material-on-the-moon.pdf",
+    "topics": [
+      "moon",
+      "history",
+      "hardware",
+      "apollo",
+      "storytelling"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "apollo-surface-journal",
+    "name": "Apollo Lunar Surface Journal and Apollo Flight Journal",
+    "provider": "NASA History Office",
+    "description": "Annotated transcripts, photos and commentary for every Apollo mission, minute by minute. Shows what each piece of hardware did on the surface, in the astronauts' own words.",
+    "access": {
+      "type": "web",
+      "endpoint": "https://www.nasa.gov/history/alsj-and-afj/"
+    },
+    "auth": "none",
+    "browserCors": null,
+    "formats": [
+      "Web",
+      "Images",
+      "Audio"
+    ],
+    "docsUrl": "https://www.nasa.gov/history/alsj-and-afj/",
+    "topics": [
+      "moon",
+      "apollo",
+      "history",
+      "hardware",
+      "storytelling"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "alsep-arcsav",
+    "name": "Apollo ALSEP Data Recovered from ARCSAV Tapes",
+    "provider": "NASA PDS Geosciences Node",
+    "description": "Science data from the Apollo Lunar Surface Experiments Packages, instruments that were left on the Moon and kept sending data for years. Recovered from archival tapes and published through PDS.",
+    "access": {
+      "type": "download",
+      "endpoint": "https://pds-geosciences.wustl.edu/missions/apollo/"
+    },
+    "auth": "none",
+    "browserCors": null,
+    "formats": [
+      "PDS",
+      "Tables"
+    ],
+    "docsUrl": "https://pds-geosciences.wustl.edu/missions/apollo/",
+    "topics": [
+      "moon",
+      "apollo",
+      "hardware",
+      "seismology",
+      "history"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "diviner-polar-temperature",
+    "name": "LRO Diviner Lunar Surface and Polar Temperature Maps",
+    "provider": "NASA LRO Diviner team (UCLA) / PDS Geosciences",
+    "description": "Surface temperature maps of the Moon from the Diviner radiometer, including polar products for the coldest permanently shadowed areas. Hosted on the team's own server, so rarely found by search.",
+    "access": {
+      "type": "download",
+      "endpoint": "https://www.diviner.ucla.edu/data"
+    },
+    "auth": "none",
+    "browserCors": null,
+    "formats": [
+      "GeoTIFF",
+      "PDS"
+    ],
+    "docsUrl": "https://pds-geosciences.wustl.edu/missions/lro/diviner.htm",
+    "topics": [
+      "moon",
+      "temperature",
+      "south-pole",
+      "analogs",
+      "thermal"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "shadowcam-psr",
+    "name": "ShadowCam Images of Permanently Shadowed Regions",
+    "provider": "NASA ShadowCam on KPLO (Arizona State University)",
+    "description": "Images from inside the Moon's permanently shadowed craters, taken by a very sensitive NASA camera on Korea's Danuri orbiter using faint light reflected off nearby terrain. Unique views of the south pole terrain landers will face.",
+    "access": {
+      "type": "download",
+      "endpoint": "https://pds.shadowcam.im-ldi.com/"
+    },
+    "auth": "none",
+    "browserCors": null,
+    "formats": [
+      "PDS4",
+      "Images"
+    ],
+    "docsUrl": "https://shadowcam.im-ldi.com/archive",
+    "topics": [
+      "moon",
+      "south-pole",
+      "imagery",
+      "landing-sites"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "pgda-lunar-polar-illumination",
+    "name": "Lunar Polar Illumination and South Pole Site Maps (PGDA)",
+    "provider": "NASA Goddard Planetary Geodesy Data Archive",
+    "description": "Ready-made maps of how often the Sun is visible across the lunar poles, derived from LOLA topography, plus high-resolution topography of candidate south pole sites. Answers the solar power question without running your own horizon calculations.",
+    "access": {
+      "type": "download",
+      "endpoint": "https://pgda.gsfc.nasa.gov/products/69"
+    },
+    "auth": "none",
+    "browserCors": null,
+    "formats": [
+      "GeoTIFF",
+      "Images"
+    ],
+    "docsUrl": "https://pgda.gsfc.nasa.gov/products/69",
+    "topics": [
+      "moon",
+      "south-pole",
+      "illumination",
+      "power",
+      "landing-sites"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "msl-rad",
+    "name": "Curiosity RAD Surface Radiation Data",
+    "provider": "NASA PDS Planetary Plasma Interactions Node",
+    "description": "Radiation measured on the surface of Mars by Curiosity's Radiation Assessment Detector since 2012. The real dose numbers behind radiation-shielding decisions for crews.",
+    "access": {
+      "type": "download",
+      "endpoint": "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/"
+    },
+    "auth": "none",
+    "browserCors": null,
+    "formats": [
+      "PDS",
+      "Tables"
+    ],
+    "docsUrl": "https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/",
+    "topics": [
+      "mars",
+      "radiation",
+      "astronaut-health",
+      "space-weather"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "crism-mtrdr",
+    "name": "MRO CRISM Mineral Map Products (MTRDR)",
+    "provider": "NASA PDS Geosciences Node",
+    "description": "Mineral maps of the Martian surface from the CRISM spectrometer, showing clays, sulfates and other minerals. Useful for science stops on a Mars route and for matching Mars terrain to Earth sites.",
+    "access": {
+      "type": "download",
+      "endpoint": "https://ode.rsl.wustl.edu/mars/"
+    },
+    "auth": "none",
+    "browserCors": null,
+    "formats": [
+      "PDS4",
+      "Images"
+    ],
+    "docsUrl": "https://pds-geosciences.wustl.edu/missions/mro/crism.htm",
+    "topics": [
+      "mars",
+      "minerals",
+      "geology",
+      "analogs"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "ames-mars-climate",
+    "name": "NASA Ames Reference Mars Climate Simulations",
+    "provider": "NASA Ames Mars Climate Modeling Center",
+    "description": "Reference runs of the NASA Ames Mars climate model: temperature, pressure, wind and dust through the Martian year. Gives a planner expected conditions anywhere on a route, with Python tools to read them.",
+    "access": {
+      "type": "download",
+      "endpoint": "https://data.nas.nasa.gov/mcmcref/"
+    },
+    "auth": "none",
+    "browserCors": null,
+    "formats": [
+      "NetCDF"
+    ],
+    "docsUrl": "https://github.com/NASA-Planetary-Science/AmesCAP",
+    "topics": [
+      "mars",
+      "weather",
+      "climate",
+      "dust"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "emit-mineralogy",
+    "name": "EMIT L2B Surface Mineral Identification (EMITL2BMIN)",
+    "provider": "NASA LP DAAC",
+    "description": "Surface mineral maps of Earth's arid regions from the EMIT spectrometer on the space station. Lets you find Earth deserts with the same minerals seen on Mars.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2408034484-LPCLOUD",
+      "cmrShortName": "EMITL2BMIN",
+      "cmrConceptId": "C2408034484-LPCLOUD"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "NetCDF"
+    ],
+    "docsUrl": "https://cmr.earthdata.nasa.gov/search/concepts/C2408034484-LPCLOUD.html",
+    "topics": [
+      "minerals",
+      "analogs",
+      "desert",
+      "geology"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "ecostress-et",
+    "name": "ECOSTRESS Evapotranspiration (ECO_L3T_JET) V003",
+    "provider": "NASA LP DAAC",
+    "description": "How much water plants are using, at about 70 m resolution, from the ECOSTRESS instrument on the space station. A companion Evaporative Stress Index product (ECO_L4T_ESI, concept C4057232495-LPCLOUD) flags fields under water stress.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C4057232489-LPCLOUD",
+      "cmrShortName": "ECO_L3T_JET",
+      "cmrConceptId": "C4057232489-LPCLOUD"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "GeoTIFF"
+    ],
+    "docsUrl": "https://cmr.earthdata.nasa.gov/search/concepts/C4057232489-LPCLOUD.html",
+    "topics": [
+      "agriculture",
+      "water",
+      "drought",
+      "crops"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "oco-sif",
+    "name": "OCO-2 Lite Solar-Induced Fluorescence (OCO2_L2_Lite_SIF)",
+    "provider": "NASA GES DISC",
+    "description": "Solar-induced fluorescence, a faint glow from active photosynthesis that drops when crops are stressed, often before they look stressed. OCO-3 has a matching product (OCO3_L2_Lite_SIF, concept C2910085832-GES_DISC).",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2912084771-GES_DISC",
+      "cmrShortName": "OCO2_L2_Lite_SIF",
+      "cmrConceptId": "C2912084771-GES_DISC"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "NetCDF"
+    ],
+    "docsUrl": "https://cmr.earthdata.nasa.gov/search/concepts/C2912084771-GES_DISC.html",
+    "topics": [
+      "agriculture",
+      "crops",
+      "vegetation",
+      "carbon"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "tempo-no2",
+    "name": "TEMPO Gridded Nitrogen Dioxide (L3) V04",
+    "provider": "NASA LaRC ASDC",
+    "description": "Hourly daytime air quality over North America from TEMPO, the first air-quality instrument in geostationary orbit. Shows pollution changing through a single day, not just year to year.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C3685896708-LARC_CLOUD",
+      "cmrShortName": "TEMPO_NO2_L3",
+      "cmrConceptId": "C3685896708-LARC_CLOUD"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "NetCDF"
+    ],
+    "docsUrl": "https://cmr.earthdata.nasa.gov/search/concepts/C3685896708-LARC_CLOUD.html",
+    "topics": [
+      "air-quality",
+      "pollution",
+      "trends",
+      "atmosphere"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "pace-oci-bgc",
+    "name": "PACE OCI Ocean Biogeochemistry (L3M BGC)",
+    "provider": "NASA OB.DAAC",
+    "description": "Mapped ocean color products from PACE, launched in 2024, including chlorophyll. A matching land vegetation index product exists (PACE_OCI_L3M_LANDVI, concept C3620140363-OB_CLOUD).",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C4184125847-OB_CLOUD",
+      "cmrShortName": "PACE_OCI_L3M_BGC",
+      "cmrConceptId": "C4184125847-OB_CLOUD"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "NetCDF"
+    ],
+    "docsUrl": "https://cmr.earthdata.nasa.gov/search/concepts/C4184125847-OB_CLOUD.html",
+    "topics": [
+      "ocean",
+      "chlorophyll",
+      "trends",
+      "vegetation"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "bvad-life-support",
+    "name": "Life Support Baseline Values and Assumptions Document (BVAD)",
+    "provider": "NASA Technical Reports Server",
+    "description": "NASA's reference numbers for crew needs: oxygen, water, food, power and waste per person per day, plus life-support equipment assumptions. Gives an outpost game real values instead of guesses.",
+    "access": {
+      "type": "download",
+      "endpoint": "https://ntrs.nasa.gov/citations/20210024855"
+    },
+    "auth": "none",
+    "browserCors": null,
+    "formats": [
+      "PDF"
+    ],
+    "docsUrl": "https://ntrs.nasa.gov/citations/20210024855",
+    "topics": [
+      "life-support",
+      "habitat",
+      "games",
+      "astronaut-health"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "gmat",
+    "name": "General Mission Analysis Tool (GMAT)",
+    "provider": "NASA Goddard",
+    "description": "NASA's open-source tool for designing and simulating spacecraft trajectories, used on real missions. Useful as a reference engine or a source of realistic numbers for a mission design game.",
+    "access": {
+      "type": "web",
+      "endpoint": "https://github.com/nasa/GMAT"
+    },
+    "auth": "none",
+    "browserCors": null,
+    "formats": [
+      "Software"
+    ],
+    "docsUrl": "https://github.com/nasa/GMAT",
+    "topics": [
+      "mission-design",
+      "trajectories",
+      "games",
+      "software"
+    ],
+    "checked": "2026-10-05"
+  },
+  {
+    "id": "nasa-sonifications",
+    "name": "Chandra and Hubble Data Sonifications",
+    "provider": "NASA Chandra X-ray Center / NASA Science",
+    "description": "A collection of NASA images translated into sound, with notes on how each mapping was chosen. Good worked examples of turning visual data into music.",
+    "access": {
+      "type": "web",
+      "endpoint": "https://chandra.si.edu/sound/"
+    },
+    "auth": "none",
+    "browserCors": null,
+    "formats": [
+      "Audio",
+      "Video"
+    ],
+    "docsUrl": "https://science.nasa.gov/mission/hubble/multimedia/sonifications/",
+    "topics": [
+      "sonification",
+      "audio",
+      "art",
+      "accessibility"
+    ],
+    "checked": "2026-10-05"
   }
 ]
