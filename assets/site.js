@@ -1,13 +1,21 @@
 // Theme toggle, map highlighting, list filters, copy buttons, live CMR search.
 (() => {
   const root = document.documentElement;
-  document.querySelector(".theme")?.addEventListener("click", () => {
-    const dark = root.dataset.theme
-      ? root.dataset.theme === "dark"
-      : matchMedia("(prefers-color-scheme: dark)").matches;
-    root.dataset.theme = dark ? "light" : "dark";
+  const themeBtn = document.querySelector(".theme");
+  const isDark = () => root.dataset.theme
+    ? root.dataset.theme === "dark"
+    : matchMedia("(prefers-color-scheme: dark)").matches;
+  // The label names the action, so screen readers hear what a press will do.
+  const label = () => {
+    if (!themeBtn) return;
+    themeBtn.setAttribute("aria-label", isDark() ? "Switch to light theme" : "Switch to dark theme");
+  };
+  themeBtn?.addEventListener("click", () => {
+    root.dataset.theme = isDark() ? "light" : "dark";
     try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+    label();
   });
+  label();
 
   // Map: light up a challenge's links, or a dataset's links.
   const svg = document.querySelector(".atlas-svg");

@@ -74,7 +74,7 @@ ${noindex ? '<meta name="robots" content="noindex">' : ""}
 <header class="site-head">
   <a class="wordmark" href="/"><svg aria-hidden="true" viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 19c5-4 9 2 14-2s6-6 8-5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="22" cy="10" r="2.5" fill="currentColor"/></svg>Space Data Atlas</a>
   <nav aria-label="Main">${nav}</nav>
-  <button class="theme" type="button" aria-label="Switch light or dark theme">Theme</button>
+  <button class="theme" type="button" aria-label="Switch to dark theme" title="Switch theme"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><clipPath id="earth-clip"><circle cx="16" cy="16" r="13"/></clipPath></defs><g clip-path="url(#earth-clip)"><rect class="ocean" width="32" height="32"/><path class="land" d="M6 10c2-3 6-4 8-2s0 4-2 5-1 4-3 4-4-1-4-3 0-2 1-4z M17 6c4-1 8 1 10 5-2 2-4 1-5 3s1 5-1 7-4 2-5 0 1-4 0-6-2-6 1-9z M10 21c2-1 4 0 4 2s-1 4-3 4-2-4-1-6z"/><path class="night" d="M15 0C10 9 10 23 15 32H44V0Z"/><g class="lights"><circle cx="21" cy="12" r=".9"/><circle cx="24" cy="15" r=".7"/><circle cx="20" cy="18" r=".8"/><circle cx="22" cy="21" r=".6"/><circle cx="13" cy="24" r=".7"/><circle cx="18" cy="9" r=".6"/></g></g><circle class="rim" cx="16" cy="16" r="13"/></svg></button>
 </header>
 <main id="main">
 ${body}
@@ -384,7 +384,7 @@ function howItWorks() {
 <h2>The MCP server</h2>
 <p>A Cloudflare Pages Function at <code>/mcp</code> speaks the Model Context Protocol's Streamable HTTP transport in stateless JSON mode. It has no SDK dependency: about two hundred lines handle <code>initialize</code>, <code>tools/list</code> and <code>tools/call</code>. Four tools read the bundled data; one forwards a capped keyword search to CMR with a <code>Client-Id</code> header so NASA can see where the traffic comes from. No API keys exist anywhere in the system, so there is nothing to leak and no shared quota to exhaust.</p>
 <h2>Design</h2>
-<p>The look borrows from survey maps: cool paper, ink, and a single route blue for the lines that connect a challenge to its data. The home page diagram is the product itself drawn as a map rather than decoration. Headings are set in Bricolage Grotesque and body text in Atkinson Hyperlegible, a face designed by the Braille Institute for legibility. Code uses JetBrains Mono, and only code. There is one interactive motion: lines light up when you point at a challenge.</p>
+<p>The look borrows from survey maps: cool paper, ink, and a single route blue for the lines that connect a challenge to its data. The home page diagram is the product itself drawn as a map rather than decoration. Headings are set in Bricolage Grotesque and body text in Atkinson Hyperlegible, a face designed by the Braille Institute for legibility. Code uses JetBrains Mono, and only code. There are two interactive motions: lines light up when you point at a challenge, and the theme switch is a small Earth whose night side slides across, city lights coming on, when you choose dark mode. Both are switched off for people who ask their system for reduced motion.</p>
 <h2>Trade-offs</h2>
 <p>No framework and no build step beyond one script, so the site loads fast and anyone can fork it in an afternoon. No accounts or team features, which keeps it safe to run unattended during the event. The cost is that dataset matching is hand-curated, which is also the point: that judgment is what a search box can't give you.</p></div>`,
   });
