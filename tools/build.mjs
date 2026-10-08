@@ -62,6 +62,8 @@ ${noindex ? '<meta name="robots" content="noindex">' : ""}
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="${SITE}${path}">
+<meta property="og:image" content="${SITE}/assets/share.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
