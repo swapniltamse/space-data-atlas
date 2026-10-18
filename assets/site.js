@@ -78,6 +78,19 @@
     run();
   }
 
+  // Badges: a tap (or Enter) shows what the badge means, right under the badge row.
+  document.querySelectorAll(".badge[data-tip]").forEach((b) =>
+    b.addEventListener("click", () => {
+      const row = b.closest(".badges");
+      const open = b.getAttribute("aria-expanded") === "true";
+      row.querySelectorAll(".badge[data-tip]").forEach((x) => x.setAttribute("aria-expanded", "false"));
+      row.nextElementSibling?.classList.contains("tip") && row.nextElementSibling.remove();
+      if (open) return;
+      b.setAttribute("aria-expanded", "true");
+      row.after(Object.assign(document.createElement("p"), { className: "tip", role: "status", textContent: b.dataset.tip }));
+    }),
+  );
+
   // Copy buttons.
   document.querySelectorAll(".copy").forEach((b) =>
     b.addEventListener("click", async () => {

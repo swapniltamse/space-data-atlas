@@ -169,5 +169,212 @@
     "runsIn": "browser",
     "needsLogin": false,
     "code": "// Build a GIBS WMTS tile URL (no key, CORS enabled) for a given day.\r\n// Layer names come from the GIBS capabilities document.\r\nconst layer = \"MODIS_Terra_CorrectedReflectance_TrueColor\";\r\nconst date = \"2026-10-01\";\r\nconst [zoom, row, col] = [2, 1, 2];\r\nconst url = `https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/${layer}` +\r\n  `/default/${date}/250m/${zoom}/${row}/${col}.jpg`;\r\n\r\nconst res = await fetch(url);\r\nconsole.log(res.status, res.headers.get(\"content-type\"), url);\r\n// In a map library (Leaflet, OpenLayers) use the same template with\r\n// {z}/{y}/{x}. Fire layers such as VIIRS_SNPP_Thermal_Anomalies_375m_All\r\n// are vector tiles (.mvt, 500m matrix set); check the capabilities XML."
+  },
+  {
+    "id": "nisar-gunw-search",
+    "datasetId": "nisar-l2-gunw",
+    "lang": "python",
+    "title": "Search NISAR interferograms",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. Bounding box: (west, south, east, north)\nresults = earthaccess.search_data(\n    short_name=\"NISAR_L2_GUNW_PROVISIONAL_V1\",\n    bounding_box=(-122.6, 37.0, -121.5, 38.2),  # San Francisco Bay\n    temporal=(\"2025-10-01\", \"2026-10-15\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./nisar\")"
+  },
+  {
+    "id": "opera-rtc-search",
+    "datasetId": "opera-rtc-s1",
+    "lang": "python",
+    "title": "Search OPERA radar backscatter tiles",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. Bounding box: (west, south, east, north)\nresults = earthaccess.search_data(\n    short_name=\"OPERA_L2_RTC-S1_V1\",\n    bounding_box=(-95.8, 29.5, -95.0, 30.1),  # Houston\n    temporal=(\"2026-09-01\", \"2026-10-15\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./opera_rtc\")\n# import rasterio; img = rasterio.open(files[0]).read(1)"
+  },
+  {
+    "id": "opera-dswx-search",
+    "datasetId": "opera-dswx-hls",
+    "lang": "python",
+    "title": "Search OPERA surface water maps",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. Bounding box: (west, south, east, north)\nresults = earthaccess.search_data(\n    short_name=\"OPERA_L3_DSWX-HLS_V1\",\n    bounding_box=(-81.2, 26.6, -80.6, 27.2),  # Lake Okeechobee, Florida\n    temporal=(\"2026-09-01\", \"2026-10-15\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./opera_dswx\")\n# import rasterio; img = rasterio.open(files[0]).read(1)"
+  },
+  {
+    "id": "opera-dist-search",
+    "datasetId": "opera-dist-alert-hls",
+    "lang": "python",
+    "title": "Search OPERA land disturbance alerts",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. Bounding box: (west, south, east, north)\nresults = earthaccess.search_data(\n    short_name=\"OPERA_L3_DIST-ALERT-HLS_V1\",\n    bounding_box=(-63.5, -10.5, -62.5, -9.5),  # Rondonia, Brazil\n    temporal=(\"2026-08-01\", \"2026-10-15\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./opera_dist\")\n# import rasterio; img = rasterio.open(files[0]).read(1)"
+  },
+  {
+    "id": "modis-fire-search",
+    "datasetId": "modis-terra-fire-mod14",
+    "lang": "python",
+    "title": "Search MODIS Terra fire detections",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. Bounding box: (west, south, east, north)\nresults = earthaccess.search_data(\n    short_name=\"MOD14\",\n    bounding_box=(-124.4, 32.5, -114.1, 42.0),  # California\n    temporal=(\"2026-09-01\", \"2026-10-15\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./mod14\")"
+  },
+  {
+    "id": "viirs-noaa20-fire-search",
+    "datasetId": "viirs-noaa20-fire-vj114img",
+    "lang": "python",
+    "title": "Search VIIRS NOAA-20 fire detections",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. Bounding box: (west, south, east, north)\nresults = earthaccess.search_data(\n    short_name=\"VJ114IMG\",\n    bounding_box=(-124.4, 32.5, -114.1, 42.0),  # California\n    temporal=(\"2026-09-01\", \"2026-10-15\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./vj114img\")\n# import xarray as xr; ds = xr.open_dataset(files[0])"
+  },
+  {
+    "id": "modis-ndvi-search",
+    "datasetId": "modis-ndvi-mod13q1",
+    "lang": "python",
+    "title": "Search 16-day MODIS vegetation index",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. Bounding box: (west, south, east, north)\nresults = earthaccess.search_data(\n    short_name=\"MOD13Q1\",\n    bounding_box=(-96.6, 40.4, -90.1, 43.5),  # Iowa farmland\n    temporal=(\"2026-06-01\", \"2026-10-15\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./ndvi\")"
+  },
+  {
+    "id": "imerg-daily-search",
+    "datasetId": "gpm-imerg-daily",
+    "lang": "python",
+    "title": "Search daily GPM IMERG rainfall",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. This product is global, so no bounding box.\nresults = earthaccess.search_data(\n    short_name=\"GPM_3IMERGDF\",\n    temporal=(\"2025-09-01\", \"2025-09-10\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./imerg\")\n# import xarray as xr; ds = xr.open_dataset(files[0])\n# The Final Run lags by months. For recent days, use short_name=\"GPM_3IMERGDL\" (Late Run)."
+  },
+  {
+    "id": "merra2-monthly-search",
+    "datasetId": "merra2-monthly",
+    "lang": "python",
+    "title": "Search MERRA-2 monthly weather fields",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. This product is global, so no bounding box.\nresults = earthaccess.search_data(\n    short_name=\"M2TMNXSLV\",\n    temporal=(\"2025-01-01\", \"2025-12-31\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./merra2\")\n# import xarray as xr; ds = xr.open_dataset(files[0])"
+  },
+  {
+    "id": "srtm-tile-search",
+    "datasetId": "srtm-elevation",
+    "lang": "python",
+    "title": "Find SRTM elevation tiles for an area",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. Bounding box: (west, south, east, north)\nresults = earthaccess.search_data(\n    short_name=\"SRTMGL1\",\n    bounding_box=(-74.3, 40.5, -73.7, 40.95),  # New York City\n    temporal=(\"2000-02-11\", \"2000-02-22\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./srtm\")"
+  },
+  {
+    "id": "emit-minerals-search",
+    "datasetId": "emit-mineralogy",
+    "lang": "python",
+    "title": "Search EMIT surface mineral maps",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. Bounding box: (west, south, east, north)\nresults = earthaccess.search_data(\n    short_name=\"EMITL2BMIN\",\n    bounding_box=(-116.5, 35.0, -115.5, 36.0),  # Mojave Desert\n    temporal=(\"2024-01-01\", \"2026-10-15\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./emit\")\n# import xarray as xr; ds = xr.open_dataset(files[0])"
+  },
+  {
+    "id": "ecostress-et-search",
+    "datasetId": "ecostress-et",
+    "lang": "python",
+    "title": "Search ECOSTRESS evapotranspiration tiles",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. Bounding box: (west, south, east, north)\nresults = earthaccess.search_data(\n    short_name=\"ECO_L3T_JET\",\n    bounding_box=(-121.0, 36.5, -119.5, 37.5),  # Central Valley, California\n    temporal=(\"2026-06-01\", \"2026-10-15\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./ecostress\")\n# import rasterio; img = rasterio.open(files[0]).read(1)"
+  },
+  {
+    "id": "oco-sif-search",
+    "datasetId": "oco-sif",
+    "lang": "python",
+    "title": "Search OCO-2 plant fluorescence (SIF)",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. This product is global, so no bounding box.\nresults = earthaccess.search_data(\n    short_name=\"OCO2_L2_Lite_SIF\",\n    temporal=(\"2026-07-01\", \"2026-07-27\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./oco_sif\")\n# import xarray as xr; ds = xr.open_dataset(files[0])"
+  },
+  {
+    "id": "tempo-no2-search",
+    "datasetId": "tempo-no2",
+    "lang": "python",
+    "title": "Search hourly TEMPO NO2 over a city",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. Bounding box: (west, south, east, north)\nresults = earthaccess.search_data(\n    short_name=\"TEMPO_NO2_L3\",\n    bounding_box=(-74.3, 40.5, -73.7, 40.95),  # New York City\n    temporal=(\"2026-09-01\", \"2026-10-15\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./tempo\")\n# import xarray as xr; ds = xr.open_dataset(files[0])"
+  },
+  {
+    "id": "pace-bgc-search",
+    "datasetId": "pace-oci-bgc",
+    "lang": "python",
+    "title": "Search PACE ocean chlorophyll maps",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import earthaccess\n\n# Search needs no login. This product is global, so no bounding box.\nresults = earthaccess.search_data(\n    short_name=\"PACE_OCI_L3M_BGC\",\n    temporal=(\"2026-08-01\", \"2026-08-31\"),\n    count=5,\n)\nprint(len(results), \"granules\")\nfor g in results:\n    print(g[\"umm\"][\"GranuleUR\"])\n\n# Next step (downloads need a free Earthdata Login):\n# earthaccess.login()\n# files = earthaccess.download(results[:1], \"./pace\")\n# import xarray as xr; ds = xr.open_dataset(files[0])"
+  },
+  {
+    "id": "moon-wac-tile",
+    "datasetId": "moon-trek-wac-mosaic",
+    "lang": "javascript",
+    "title": "Fetch a global Moon mosaic tile",
+    "runsIn": "browser",
+    "needsLogin": false,
+    "code": "// Read the WMTS capabilities for the LRO WAC global mosaic, then fetch one tile.\n// Moon Trek tiles send CORS headers, so this runs in a web page.\nconst base = \"https://trek.nasa.gov/tiles/Moon/EQ/LRO_WAC_Mosaic_Global_303ppd_v02/1.0.0\";\nconst xml = await fetch(`${base}/WMTSCapabilities.xml`).then((r) => r.text());\nconst template = xml.match(/template=\"([^\"]+)\"/)[1];\nconst matrixSet = xml.match(/<TileMatrixSet>([^<]+)<\\/TileMatrixSet>/)[1];\n\nconst tileUrl = template\n  .replace(\"{Style}\", \"default\").replace(\"{TileMatrixSet}\", matrixSet)\n  .replace(\"{TileMatrix}\", \"0\").replace(\"{TileRow}\", \"0\").replace(\"{TileCol}\", \"0\");\nconst tile = await fetch(tileUrl);\nconsole.log(tile.status, tile.headers.get(\"content-type\"), tileUrl);\n// In Leaflet: L.tileLayer(template with {z}/{y}/{x} in place of the matrix parts)"
+  },
+  {
+    "id": "mars-ctx-tile",
+    "datasetId": "mars-trek",
+    "lang": "javascript",
+    "title": "Fetch a Mars CTX mosaic tile",
+    "runsIn": "browser",
+    "needsLogin": false,
+    "code": "// Read the WMTS capabilities for the Mars CTX mosaic, then fetch one tile.\n// The capabilities point at the tile server, which sends CORS headers.\nconst base = \"https://trek.nasa.gov/tiles/Mars/EQ/CTX_beta01_uncontrolled_5m_Caltech/1.0.0\";\nconst xml = await fetch(`${base}/WMTSCapabilities.xml`).then((r) => r.text());\nconst template = xml.match(/template=\"([^\"]+)\"/)[1];\nconsole.log(\"tile template:\", template);\n\nconst tileUrl = template\n  .replace(\"{TileMatrix}\", \"0\").replace(\"{TileRow}\", \"0\").replace(\"{TileCol}\", \"0\");\nconst tile = await fetch(tileUrl);\nconsole.log(tile.status, tile.headers.get(\"content-type\"), tileUrl);"
+  },
+  {
+    "id": "lola-dem-list",
+    "datasetId": "lola-ode-rest",
+    "lang": "python",
+    "title": "List LOLA lunar elevation maps",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import requests\n\n# Ask the Orbital Data Explorer for LOLA gridded elevation products\nr = requests.get(\"https://oderest.rsl.wustl.edu/live2/\", params={\n    \"query\": \"product\", \"results\": \"fp\", \"output\": \"JSON\", \"limit\": 5,\n    \"target\": \"moon\", \"ihid\": \"LRO\", \"iid\": \"LOLA\", \"pt\": \"GDRDEM\",\n}, timeout=60)\nr.raise_for_status()\nfor p in r.json()[\"ODEResults\"][\"Products\"][\"Product\"]:\n    files = p[\"Product_files\"][\"Product_file\"]\n    jpg = next((f[\"URL\"] for f in files if f[\"URL\"].endswith(\".jpg\")), None)\n    print(p[\"pdsid\"], \"| preview:\", jpg)"
+  },
+  {
+    "id": "hirise-jezero",
+    "datasetId": "hirise",
+    "lang": "python",
+    "title": "Find HiRISE images of Jezero Crater",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import requests\n\n# Orbital Data Explorer search: HiRISE map-projected images in a lat/lon box\nr = requests.get(\"https://oderest.rsl.wustl.edu/live2/\", params={\n    \"query\": \"product\", \"results\": \"fp\", \"output\": \"JSON\", \"limit\": 5,\n    \"target\": \"mars\", \"ihid\": \"MRO\", \"iid\": \"HIRISE\", \"pt\": \"RDRV11\",\n    \"westlon\": 77.3, \"eastlon\": 77.6, \"minlat\": 18.3, \"maxlat\": 18.6,  # Jezero Crater\n}, timeout=60)\nr.raise_for_status()\nfor p in r.json()[\"ODEResults\"][\"Products\"][\"Product\"]:\n    files = p[\"Product_files\"][\"Product_file\"]\n    thumb = next((f[\"URL\"] for f in files if f[\"FileName\"].endswith(\".THUMB.JPG\")), None)\n    print(p[\"pdsid\"], \"|\", thumb)"
+  },
+  {
+    "id": "crism-jezero",
+    "datasetId": "crism-mtrdr",
+    "lang": "python",
+    "title": "Find CRISM mineral cubes near Jezero",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import requests\n\n# Orbital Data Explorer search: CRISM map-projected targeted cubes (MTRDR)\nr = requests.get(\"https://oderest.rsl.wustl.edu/live2/\", params={\n    \"query\": \"product\", \"results\": \"fp\", \"output\": \"JSON\", \"limit\": 5,\n    \"target\": \"mars\", \"ihid\": \"MRO\", \"iid\": \"CRISM\", \"pt\": \"MTRDR\",\n    \"westlon\": 77, \"eastlon\": 78, \"minlat\": 18, \"maxlat\": 19,  # Jezero Crater area\n}, timeout=60)\nr.raise_for_status()\nfor p in r.json()[\"ODEResults\"][\"Products\"][\"Product\"]:\n    files = p[\"Product_files\"][\"Product_file\"]\n    img = [f[\"URL\"] for f in files if f[\"URL\"].endswith(\".img\")]\n    print(p[\"pdsid\"], \"|\", len(img), \"image cubes\")"
+  },
+  {
+    "id": "spice-time",
+    "datasetId": "naif-spice",
+    "lang": "python",
+    "title": "Load a SPICE kernel and convert a date",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import requests\nimport spiceypy  # pip install spiceypy\n\n# The leap-seconds kernel is the first thing almost every SPICE program loads\nurl = \"https://naif.jpl.nasa.gov/pub/naif/generic_kernels/lsk/naif0012.tls\"\nopen(\"naif0012.tls\", \"wb\").write(requests.get(url, timeout=60).content)\nspiceypy.furnsh(\"naif0012.tls\")\n\net = spiceypy.str2et(\"2026-11-15T12:00:00\")\nprint(\"seconds past J2000 (TDB):\", et)\n# Next: load planet and spacecraft kernels (spk/, pck/) and call spiceypy.spkpos"
+  },
+  {
+    "id": "nasa-3d-list",
+    "datasetId": "nasa-3d-resources",
+    "lang": "python",
+    "title": "List NASA 3D models",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import requests\n\n# GitHub's API lists the model folders. Unauthenticated calls are limited\n# to 60 an hour per network, so cache the list rather than calling in a loop.\nurl = \"https://api.github.com/repos/nasa/NASA-3D-Resources/contents/3D%20Models\"\nmodels = requests.get(url, timeout=30).json()\nprint(len(models), \"models\")\nfor m in models[:10]:\n    print(m[\"name\"], \"|\", m[\"html_url\"])"
+  },
+  {
+    "id": "msl-rad-index",
+    "datasetId": "msl-rad",
+    "lang": "python",
+    "title": "Read the Curiosity RAD file index",
+    "runsIn": "python",
+    "needsLogin": false,
+    "code": "import requests\n\n# The PDS index lists every RAD radiation file, one per row\nbase = \"https://pds-ppi.igpp.ucla.edu/data/MSL-M-RAD-3-RDR-V1.0/\"\nrows = requests.get(base + \"INDEX/INDEX.TAB\", timeout=60).text.splitlines()\nprint(len(rows), \"files in the index\")\nfor row in rows[:5]:\n    print(row[:120])\n# Each row has the file path; prefix it with the base URL to download it"
   }
 ]

@@ -34,7 +34,7 @@ Everything lives in `data/` and every page and the MCP server are generated from
 |---|---|
 | `challenges-2026.json` | Slug, title, official link, level, subjects, paraphrased summary |
 | `datasets.json` | Curated datasets and APIs with access type, auth, browser CORS, CMR concept IDs |
-| `starters.json` | Short Python and JavaScript snippets, run before publishing |
+| `starters.json` | Short Python and JavaScript snippets, run before publishing. The build also writes each Python one to `notebooks/` so it opens in Colab |
 | `challenge-map.json` | Which datasets fit each challenge, plus first-hour steps |
 | `past.json` | 2025 global winners from NASA's announcement, matched to 2026 challenges by theme |
 

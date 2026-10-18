@@ -32,11 +32,53 @@ const authNote = {
   "earthdata-login": "Search is open. Downloading files needs a free Earthdata Login account.",
 };
 
+const CORS_NOTE = "Can be called straight from a web page.";
+
+// Badges are buttons so a tap shows what they mean; hover-only tooltips never appear on phones.
 function badges(d) {
-  const b = [`<span class="badge auth-${d.auth}" title="${esc(authNote[d.auth])}">${authLabel[d.auth]}</span>`];
-  if (d.browserCors === true) b.push(`<span class="badge cors" title="Can be called straight from a web page">Works in browser</span>`);
+  const b = [`<button type="button" class="badge auth-${d.auth}" data-tip="${esc(authNote[d.auth])}" aria-expanded="false">${authLabel[d.auth]}</button>`];
+  if (d.browserCors === true) b.push(`<button type="button" class="badge cors" data-tip="${CORS_NOTE}" aria-expanded="false">Works in browser</button>`);
   return b.join("");
 }
+
+function legend() {
+  return `<dl class="legend">
+  <div><dt><span class="badge auth-none">No login</span></dt><dd>Open to anyone.</dd></div>
+  <div><dt><span class="badge auth-api-key">Free API key</span></dt><dd>Sign up for a free key first.</dd></div>
+  <div><dt><span class="badge auth-earthdata-login">Earthdata Login</span></dt><dd>Searching is open; downloading needs a free <a href="https://urs.earthdata.nasa.gov/users/new">Earthdata Login</a> account.</dd></div>
+  <div><dt><span class="badge cors">Works in browser</span></dt><dd>Can be called straight from a web page.</dd></div>
+</dl>`;
+}
+
+// Every Python starter also ships as a notebook, so a team can run it in Colab with nothing installed.
+const colabUrl = (s) => `https://colab.research.google.com/github/swapniltamse/space-data-atlas/blob/main/notebooks/${s.id}.ipynb`;
+const PIP = { earthaccess: "earthaccess", spiceypy: "spiceypy" };
+function notebook(s) {
+  const d = byId[s.datasetId];
+  const pkgs = Object.keys(PIP).filter((m) => new RegExp(`^import ${m}\\b`, "m").test(s.code));
+  const lines = (t) => t.split("\n").map((l, i, a) => (i < a.length - 1 ? l + "\n" : l));
+  const cells = [
+    { cell_type: "markdown", metadata: {}, source: lines(`# ${s.title}\n\nDataset: [${d.name}](${d.docsUrl}). From [Space Data Atlas](${SITE}/starters/#${d.id}).\n\n${DISCLAIMER}`) },
+  ];
+  if (pkgs.length) cells.push({ cell_type: "code", metadata: {}, execution_count: null, outputs: [], source: [`%pip install -q ${pkgs.map((m) => PIP[m]).join(" ")}`] });
+  cells.push({ cell_type: "code", metadata: {}, execution_count: null, outputs: [], source: lines(s.code) });
+  return JSON.stringify({ cells, metadata: { kernelspec: { name: "python3", display_name: "Python 3" }, language_info: { name: "python" } }, nbformat: 4, nbformat_minor: 5 }, null, 1) + "\n";
+}
+
+// The one test every team should run before the weekend.
+const READY_TEST = {
+  id: "get-ready-test", title: "Test your Earthdata Login", lang: "python", datasetId: "srtm-elevation",
+  code: `import earthaccess
+
+# Asks for your Earthdata Login once, then saves it to ~/.netrc
+earthaccess.login(persist=True)
+
+# Find and download one small elevation tile (New York City)
+results = earthaccess.search_data(short_name="SRTMGL1",
+                                  bounding_box=(-74.3, 40.5, -73.7, 40.95), count=1)
+files = earthaccess.download(results, "./test")
+print("Downloaded:", files)`,
+};
 
 function page({ path, title, description, body, noindex = false }) {
   const full = path === "/" ? "Space Data Atlas" : `${title} | Space Data Atlas`;
@@ -44,6 +86,7 @@ function page({ path, title, description, body, noindex = false }) {
     ["/challenges/", "Challenges"],
     ["/datasets/", "Datasets"],
     ["/starters/", "Starter code"],
+    ["/get-ready/", "Get ready"],
     ["/past/", "Past winners"],
     ["/connect/", "Use with AI"],
   ]
@@ -113,7 +156,7 @@ function accessLine(d) {
 
 function starterBlock(s) {
   return `<figure class="starter">
-  <figcaption><span>${esc(s.title)}</span><span class="lang">${s.lang === "python" ? "Python" : "JavaScript"}${s.needsLogin ? ", needs login or key" : ""}</span><button type="button" class="copy">Copy</button></figcaption>
+  <figcaption><span>${esc(s.title)}</span><span class="lang">${s.lang === "python" ? "Python" : "JavaScript"}${s.needsLogin ? ", needs login or key" : ""}</span>${s.lang === "python" ? `<a class="colab" href="${colabUrl(s)}">Open in Colab</a>` : ""}<button type="button" class="copy">Copy</button></figcaption>
   <pre><code>${esc(s.code)}</code></pre>
 </figure>`;
 }
@@ -247,7 +290,7 @@ function challengePage(c) {
 ${c.note ? `<p class="note">${esc(c.note)}</p>` : ""}
 ${c.officialResources?.length ? `<section><h2>Official resources</h2><p class="muted">Listed in the full challenge statement.</p><ul class="past">${c.officialResources.map((r) => `<li><a href="${esc(r.url)}">${esc(r.title)}</a></li>`).join("")}</ul></section>` : ""}
 <section><h2>Your first hour</h2><ol class="steps">${c.firstSteps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol></section>
-<section><h2>Suggested datasets</h2><p class="muted">In order of how useful they are likely to be. These are suggestions, not the official resource list.</p><div class="ds-grid">${ds
+<section><h2>Suggested datasets</h2><p class="muted">In order of how useful they are likely to be. These are suggestions, not the official resource list. Tap a badge to see what it means.</p>${legend()}<div class="ds-grid">${ds
       .map((d) => datasetCard(d))
       .join("")}</div></section>
 ${st.length ? `<section><h2>Starter code</h2>${st.map(starterBlock).join("")}</section>` : ""}
@@ -265,12 +308,7 @@ function datasetIndex() {
     description: "A curated catalog of NASA datasets and APIs for Space Apps 2026, marked by what access each needs.",
     body: `<h1>Datasets</h1>
 <p class="lede">${datasets.length} NASA datasets and APIs, each checked by hand on ${esc(datasets[0].checked)}. Every one says what it takes to get the data.</p>
-<dl class="legend">
-  <div><dt><span class="badge auth-none">No login</span></dt><dd>Open to anyone.</dd></div>
-  <div><dt><span class="badge auth-api-key">Free API key</span></dt><dd>Sign up for a free key first.</dd></div>
-  <div><dt><span class="badge auth-earthdata-login">Earthdata Login</span></dt><dd>Searching is open; downloading needs a free <a href="https://urs.earthdata.nasa.gov/users/new">Earthdata Login</a> account.</dd></div>
-  <div><dt><span class="badge cors">Works in browser</span></dt><dd>Can be called straight from a web page.</dd></div>
-</dl>
+${legend()}
 <div class="filters" data-filter="datasets">
   <label>Search <input type="search" data-q placeholder="fire, soil, Moon"></label>
   <label>Topic <select data-topic><option value="">Any topic</option>${topics.map((t) => `<option>${esc(t)}</option>`).join("")}</select></label>
@@ -288,7 +326,8 @@ function startersPage() {
     title: "Starter code",
     description: "Short, tested Python and JavaScript snippets for reaching NASA data.",
     body: `<h1>Starter code</h1>
-<p class="lede">Short snippets that reach real NASA data. Each one that needs no login was run before publishing.</p>
+<p class="lede">Short snippets that reach real NASA data. Each one that needs no login was run before publishing. Python snippets open in Google Colab, so you can run them with nothing installed.</p>
+<p>First time with NASA data? Do the <a href="/get-ready/">Get ready</a> checklist before the weekend.</p>
 <section><h2>Before you start</h2>
 <ol class="steps">
 <li>For Python, install the tools: <code>pip install earthaccess requests</code>.</li>
@@ -303,7 +342,46 @@ ${datasets
       .map(starterBlock)
       .join("")}</section>`,
   )
-  .join("")}`,
+  .join("")}
+<p class="note">Datasets that are web tools or documents, such as Giovanni or the Apollo Lunar Surface Journal, have no snippet. Open them from the <a href="/datasets/">dataset catalog</a>.</p>`,
+  });
+}
+
+function getReady() {
+  const loginCount = datasets.filter((d) => d.auth === "earthdata-login").length;
+  return page({
+    path: "/get-ready/",
+    title: "Get ready",
+    description: "A checklist to finish before a NASA Space Apps weekend: accounts, keys, a five-line test, and fixes for common errors.",
+    body: `<h1>Get ready before the weekend</h1>
+<p class="lede">Twenty minutes on Friday can save your team Saturday morning. Do these steps once, on the laptop you will build on.</p>
+<section><h2>1. Make your accounts</h2>
+<ol class="steps">
+<li>Create a free account at <a href="https://urs.earthdata.nasa.gov/users/new">Earthdata Login</a>. ${loginCount} datasets on this site need it for downloads.</li>
+<li>Get a free key at <a href="https://api.nasa.gov/">api.nasa.gov</a>. Do not build on <code>DEMO_KEY</code>: everyone on your network shares its limit, which was 10 requests when checked on October 18, 2026.</li>
+<li>Save the key in an environment variable, such as <code>NASA_API_KEY</code>. Never commit it to your repository.</li>
+<li>For rainfall, weather or carbon data (GPM IMERG, MERRA-2, OCO-2), open your Earthdata Login profile and approve the <strong>NASA GESDISC DATA ARCHIVE</strong> application.</li>
+</ol></section>
+<section><h2>2. Run one test</h2>
+<ol class="steps">
+<li>Install the tools: <code>pip install earthaccess requests xarray</code>. Or skip this step and use Colab.</li>
+<li>Run the test below. It logs in, finds one elevation tile and downloads it.</li>
+<li>Check that it prints a file path. If it shows an error, look it up in step 3.</li>
+</ol>
+${starterBlock(READY_TEST)}</section>
+<section><h2>3. Fix common errors</h2>
+<dl class="tools">
+<div><dt><code>401 Unauthorized</code> when downloading</dt><dd>Check your Earthdata username and password. For GES DISC data, approve the NASA GESDISC DATA ARCHIVE application in your profile, then try again.</dd></div>
+<div><dt>The search returns 0 results</dt><dd>Write the bounding box as west, south, east, north. Check that your dates fall inside the product's range. Some products arrive months late: final GPM IMERG rainfall lags by about a year.</dd></div>
+<div><dt><code>OVER_RATE_LIMIT</code> or <code>429</code> from api.nasa.gov</dt><dd>Replace <code>DEMO_KEY</code> with your own free key.</dd></div>
+<div><dt>Downloads are slow on venue Wi-Fi</dt><dd>Download one file first and build with it. Use a small area and a short date range. Fetch larger files before you arrive.</dd></div>
+</dl></section>
+<section><h2>4. Before you leave home</h2>
+<ol class="steps">
+<li>Download the files your demo needs.</li>
+<li>Record a short screen capture of your demo, in case the network fails.</li>
+<li>Bookmark your <a href="/challenges/">challenge page</a> on this site.</li>
+</ol></section>`,
   });
 }
 
@@ -405,6 +483,7 @@ out("/challenges/", challengeIndex());
 challenges.forEach((c) => out(`/challenges/${c.slug}/`, challengePage(c)));
 out("/datasets/", datasetIndex());
 out("/starters/", startersPage());
+out("/get-ready/", getReady());
 out("/past/", pastPage());
 out("/connect/", mcpPage());
 out("/about/", aboutPage());
@@ -419,7 +498,7 @@ const notFound = page({
 });
 writeFileSync(new URL("../public/404.html", import.meta.url), notFound);
 
-const urls = ["/", "/challenges/", ...challenges.map((c) => `/challenges/${c.slug}/`), "/datasets/", "/starters/", "/past/", "/connect/", "/about/"];
+const urls = ["/", "/challenges/", ...challenges.map((c) => `/challenges/${c.slug}/`), "/datasets/", "/starters/", "/get-ready/", "/past/", "/connect/", "/about/"];
 writeFileSync(
   new URL("../public/sitemap.xml", import.meta.url),
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map((u) => `<url><loc>${SITE}${u}</loc></url>`).join("")}</urlset>\n`,
@@ -431,6 +510,12 @@ writeFileSync(
   new URL("../public/_headers", import.meta.url),
   `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n`,
 );
+
+// Notebooks live in the repo (not public/) because Colab opens them from GitHub.
+const nbDir = new URL("../notebooks/", import.meta.url);
+rmSync(nbDir, { recursive: true, force: true });
+mkdirSync(nbDir, { recursive: true });
+[...starters.filter((s) => s.lang === "python"), READY_TEST].forEach((s) => writeFileSync(new URL(`${s.id}.ipynb`, nbDir), notebook(s)));
 
 // Data bundle for the MCP function and for anyone who wants the raw data.
 const bundle = { challenges, datasets, starters, past, disclaimer: DISCLAIMER, site: SITE };

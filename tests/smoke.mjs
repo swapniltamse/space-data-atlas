@@ -7,7 +7,7 @@ import { readFileSync } from "node:fs";
 
 const BASE = process.env.BASE || "http://127.0.0.1:8788";
 const challenges = JSON.parse(readFileSync("data/challenges-2026.json", "utf8"));
-const paths = ["/", "/challenges/", ...challenges.map((c) => `/challenges/${c.slug}/`), "/datasets/", "/starters/", "/past/", "/connect/", "/about/", "/how-it-works/"];
+const paths = ["/", "/challenges/", ...challenges.map((c) => `/challenges/${c.slug}/`), "/datasets/", "/starters/", "/get-ready/", "/past/", "/connect/", "/about/", "/how-it-works/"];
 const browser = await chromium.launch();
 let failures = 0;
 const fail = (m) => { failures++; console.log("FAIL", m); };

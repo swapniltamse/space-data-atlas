@@ -59,7 +59,9 @@ for (const [s, m] of Object.entries(map)) {
 for (const s of starters) if (!ids.has(s.datasetId)) fail(`starter ${s.id} -> unknown dataset ${s.datasetId}`);
 for (const d of datasets) if (d.access.type === "cmr" && !d.access.cmrConceptId) fail(`dataset ${d.id} is type cmr but has no cmrConceptId`);
 for (const w of past.winners) for (const s of w.relatedTo) if (!slugs.has(s)) fail(`past ${w.id} -> unknown challenge ${s}`);
-const unused = [...ids].filter((id) => !Object.values(map).some((m) => m.datasetIds.includes(id)));
+// Colab links point at notebooks/<id>.ipynb on GitHub, so each Python starter needs its file.
+for (const s of starters) if (s.lang === "python" && !existsSync(`notebooks/${s.id}.ipynb`)) fail(`starter ${s.id} has no notebook; run the build`);
+const unused =[...ids].filter((id) => !Object.values(map).some((m) => m.datasetIds.includes(id)));
 
 // Built pages: disclaimer on every page, no NASA insignia files.
 let pages = 0;
