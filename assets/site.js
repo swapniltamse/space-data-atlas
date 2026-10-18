@@ -5,10 +5,12 @@
   const isDark = () => root.dataset.theme
     ? root.dataset.theme === "dark"
     : matchMedia("(prefers-color-scheme: dark)").matches;
-  // The label names the action, so screen readers hear what a press will do.
+  // The label and hover title name the action; the icon shows the current theme.
   const label = () => {
     if (!themeBtn) return;
-    themeBtn.setAttribute("aria-label", isDark() ? "Switch to light theme" : "Switch to dark theme");
+    const text = isDark() ? "Switch to light theme" : "Switch to dark theme";
+    themeBtn.setAttribute("aria-label", text);
+    themeBtn.title = text;
   };
   themeBtn?.addEventListener("click", () => {
     root.dataset.theme = isDark() ? "light" : "dark";
