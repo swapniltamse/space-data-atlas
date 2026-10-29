@@ -1415,5 +1415,107 @@
       "accessibility"
     ],
     "checked": "2026-10-05"
+  },
+  {
+    "id": "gldas-noah-monthly",
+    "name": "GLDAS Noah Land Surface Model L4 Monthly 0.25 degree (GLDAS_NOAH025_M) V2.1",
+    "provider": "NASA GES DISC / GSFC Hydrological Sciences",
+    "description": "Monthly modeled soil moisture, evaporation, runoff, snow and surface temperature on a global 0.25 degree grid from 2000 on. Named in the trend detective statement as a source of variables for trend analysis.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C1342986036-GES_DISC",
+      "cmrShortName": "GLDAS_NOAH025_M",
+      "cmrConceptId": "C1342986036-GES_DISC"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "NetCDF4"
+    ],
+    "docsUrl": "https://disc.gsfc.nasa.gov/datasets/GLDAS_NOAH025_M_2.1/summary",
+    "topics": [
+      "water",
+      "soil-moisture",
+      "evaporation",
+      "trends",
+      "climate"
+    ],
+    "checked": "2026-10-29"
+  },
+  {
+    "id": "airs-monthly",
+    "name": "Aqua AIRS L3 Monthly Standard Physical Retrieval 1 degree (AIRS3STM) V7.0",
+    "provider": "NASA GES DISC / JPL",
+    "description": "Monthly global grids of air temperature, humidity, clouds and trace gases from the AIRS infrared sounder on Aqua, from 2002 on. Named in the trend detective statement.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C1701805662-GES_DISC",
+      "cmrShortName": "AIRS3STM",
+      "cmrConceptId": "C1701805662-GES_DISC"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "HDF-EOS"
+    ],
+    "docsUrl": "https://disc.gsfc.nasa.gov/datasets/AIRS3STM_7.0/summary",
+    "topics": [
+      "atmosphere",
+      "temperature",
+      "humidity",
+      "trends",
+      "climate"
+    ],
+    "checked": "2026-10-29"
+  },
+  {
+    "id": "gedi-l4b-biomass",
+    "name": "GEDI L4B Gridded Aboveground Biomass Density V2.1",
+    "provider": "NASA ORNL DAAC",
+    "description": "Mean aboveground biomass on a 1 km global grid from the GEDI lidar on the space station, covering April 2019 to March 2023. Named in the field shift statement as a layer to combine with soil moisture and vegetation data.",
+    "access": {
+      "type": "cmr",
+      "endpoint": "https://cmr.earthdata.nasa.gov/search/granules.json?collection_concept_id=C2792577683-ORNL_CLOUD",
+      "cmrShortName": "GEDI_L4B_Gridded_Biomass_V2_1_2299",
+      "cmrConceptId": "C2792577683-ORNL_CLOUD"
+    },
+    "auth": "earthdata-login",
+    "browserCors": true,
+    "formats": [
+      "GeoTIFF"
+    ],
+    "docsUrl": "https://daac.ornl.gov/cgi-bin/dsviewer.pl?ds_id=2299",
+    "topics": [
+      "vegetation",
+      "biomass",
+      "lidar",
+      "agriculture"
+    ],
+    "checked": "2026-10-29"
+  },
+  {
+    "id": "irsa-allwise",
+    "name": "AllWISE Source Catalog at IRSA (TAP)",
+    "provider": "NASA IPAC IRSA",
+    "description": "Positions and infrared brightness of about 750 million objects from the WISE mission, searchable by position through the allwise_p3as_psd TAP table. The Planet X statement suggests overlaying WISE data to confirm moving objects such as WISE 0855.",
+    "access": {
+      "type": "tap",
+      "endpoint": "https://irsa.ipac.caltech.edu/TAP/sync"
+    },
+    "auth": "none",
+    "browserCors": false,
+    "formats": [
+      "VOTable",
+      "CSV",
+      "FITS"
+    ],
+    "docsUrl": "https://irsa.ipac.caltech.edu/Missions/wise.html",
+    "topics": [
+      "astronomy",
+      "infrared",
+      "wise",
+      "brown-dwarfs"
+    ],
+    "checked": "2026-10-29"
   }
 ]

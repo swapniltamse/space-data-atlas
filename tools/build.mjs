@@ -217,7 +217,7 @@ function home() {
   <div><h2>Skip the login maze</h2><p>Every dataset is marked by what it takes to reach it: nothing, a free API key, or a free Earthdata Login. Filter for data you can use right away.</p><p><a href="/datasets/">Open the dataset catalog</a></p></div>
   <div><h2>Ask from your editor</h2><p>Connect Claude Code, Cursor or any MCP client and ask for a challenge's data, starter code, or a live NASA catalog search without leaving your project.</p><p><a href="/connect/">Connect your AI tool</a></p></div>
 </section>
-<p class="note">Dataset suggestions are mine, made from the challenge summaries released September 17. The full statements and official resource lists arrive October 28, and this site will be updated to match.</p>`,
+<p class="note">Refreshed against the full challenge statements on October 29, 2026. Dataset suggestions are curated by me and favor the data each statement names. The official resource lists open on the Space Apps site on November 13.</p>`,
   });
 }
 
@@ -439,7 +439,7 @@ function aboutPage() {
 <p class="lede">NASA publishes an enormous amount of open data. During a 48-hour hackathon, finding the right piece of it can eat the first half of the weekend.</p>
 <p>Space Apps teams start from a problem: track surface change with radar, merge two fire records, map a route on Mars. The data lives across dozens of archives with different logins, formats and search tools. Space Data Atlas starts from the problem instead and works back to the data, so a team can spend its time building.</p>
 <h2>How it is made</h2>
-<p>Each challenge summary is paraphrased from the official page and links back to it. Each dataset was checked against NASA's live services on the date shown, and each starter snippet that needs no login was run before it was published. The suggestions are my own reading of the challenges, not the official resource lists, which arrive October 28.</p>
+<p>Each challenge summary is paraphrased from the official page and links back to it. Each dataset was checked against NASA's live services on the date shown, and each starter snippet that needs no login was run before it was published. The data was refreshed against the full challenge statements on October 29, 2026. Dataset suggestions are curated, not the official resource lists, which open on the Space Apps site on November 13.</p>
 <h2>Who made it</h2>
 <p>I'm <a href="https://www.swapniltamse.com">Swapnil Tamse</a>, an engineering leader in AI and AI security in New York. I also built <a href="https://moonbase.swapniltamse.com">Wiring the Moon</a>, an explainer of NASA's lunar communications plans. This one is a free resource for Space Apps teams. ${DISCLAIMER}</p>
 <h2>Corrections</h2>
@@ -458,7 +458,7 @@ function howItWorks() {
 <h2>One source of truth</h2>
 <p>Everything lives in <code>data/</code>: challenge summaries, the dataset catalog, starter snippets and the challenge-to-dataset map. <code>tools/build.mjs</code> renders every page from those files and writes the same data as a module for the MCP server, so a correction made once shows up on both the website and in every AI tool.</p>
 <h2>Getting the challenges</h2>
-<p>The Space Apps site renders its challenge pages with JavaScript, so a plain HTTP fetch sees an empty page. <code>tools/scrape-challenges.mjs</code> opens each page in headless Chromium with Playwright and saves the rendered text. Summaries are then paraphrased by hand. The scraper runs again when the full statements are released.</p>
+<p>The Space Apps site renders its challenge pages with JavaScript, so a plain HTTP fetch sees an empty page. <code>tools/scrape-challenges.mjs</code> opens each page in headless Chromium with Playwright and saves the rendered text. Summaries are then paraphrased by hand. The full statements were scraped on October 29, 2026. The scraper also opens each page's Resources tab, which fills in on November 13.</p>
 <h2>Keeping data honest</h2>
 <p><code>tools/check-cmr.mjs</code> asks NASA's Common Metadata Repository whether every collection ID still exists and still has files. <code>tools/validate.mjs</code> fails the build if any challenge points at a dataset that doesn't exist, or if any page is missing the independence disclaimer. Both run in GitHub Actions on every push.</p>
 <h2>The MCP server</h2>
@@ -506,6 +506,11 @@ writeFileSync(
 writeFileSync(new URL("../public/robots.txt", import.meta.url), `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
 // Only /mcp runs as a Function; every other path is served straight from static assets.
 writeFileSync(new URL("../public/_routes.json", import.meta.url), JSON.stringify({ version: 1, include: ["/mcp"], exclude: [] }));
+// Space Apps renamed this challenge on Oct 28, 2026; keep old links working.
+writeFileSync(
+  new URL("../public/_redirects", import.meta.url),
+  `/challenges/clps-lunar-mission-browser/ /challenges/lunar-landing-site-navigator/ 301\n/challenges/clps-lunar-mission-browser /challenges/lunar-landing-site-navigator/ 301\n`,
+);
 writeFileSync(
   new URL("../public/_headers", import.meta.url),
   `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n`,

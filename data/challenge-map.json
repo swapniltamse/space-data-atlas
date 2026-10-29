@@ -13,41 +13,41 @@
       "Pull an LROC featured-site image (or a HiRISE image for Mars) showing each piece where it sits today.",
       "Search the NASA Image Library for launch and on-surface photos to pair with each orbital view."
     ],
-    "note": "The official resource list arrives Oct 28; the Moon side is far better covered by public imagery than deep space."
+    "note": "Official resource lists open on the Space Apps site on Nov 13; the Moon side is far better covered by public imagery than deep space."
   },
   "earth-system-trend-detective": {
     "datasetIds": [
+      "merra2-monthly",
+      "giovanni",
       "gistemp",
       "grace-mascon",
-      "merra2-monthly",
-      "tempo-no2",
-      "pace-oci-bgc",
-      "giovanni"
+      "gldas-noah-monthly",
+      "airs-monthly"
     ],
     "firstSteps": [
-      "Run the GISTEMP starter to get a clean annual series and a baseline trend in minutes.",
-      "Explore candidate variables in Giovanni before downloading anything.",
-      "Choose a significance test (linear regression p-value or Mann-Kendall) and decide how to handle autocorrelation."
+      "Pick a variable the statement names (MERRA-2, GLDAS, AIRS, GPM or MODIS) and preview it for one region in Giovanni.",
+      "Download a daily or monthly series for that region, long enough for a statistical test.",
+      "Test the trend with Mann-Kendall or a t-test and report the rate of change per year."
     ],
     "note": "Giovanni and the gridded files need a free Earthdata Login; register before the hackathon starts."
   },
   "junior-astronaut-mission-trainer": {
     "datasetIds": [
-      "bvad-life-support",
+      "donki-space-weather",
       "msl-rad",
       "moon-trek-south-pole",
-      "donki-space-weather",
-      "nasa-3d-resources",
-      "nasa-image-library"
+      "bvad-life-support",
+      "nasa-image-library",
+      "nasa-osdr"
     ],
     "firstSteps": [
-      "List the resources your outpost tracks (power, oxygen, water, food, radiation dose) and the rules that link them.",
-      "Use the Moon Trek illumination layer and DONKI particle events as real inputs for power and radiation.",
-      "Grab a lander or habitat model from NASA 3D Resources so the game has real hardware on screen."
+      "Pick two or three core resources, such as life support, power and shielding, and write the rules that link them.",
+      "Use DONKI solar events and RAD dose readings as real inputs for radiation risk.",
+      "Show players which NASA data drives each event, and label embedded data as archived, not live."
     ],
     "note": "No NASA dataset gives life-support numbers directly; cite NTRS reports for any figures you use."
   },
-  "clps-lunar-mission-browser": {
+  "lunar-landing-site-navigator": {
     "datasetIds": [
       "jpl-horizons",
       "pgda-lunar-polar-illumination",
@@ -84,7 +84,8 @@
       "nisar-l2-gunw",
       "opera-rtc-s1",
       "opera-dswx-hls",
-      "opera-dist-alert-hls"
+      "opera-dist-alert-hls",
+      "hls-landsat-l30"
     ],
     "firstSteps": [
       "Create an Earthdata Login and run the NISAR GCOV starter for your area of interest.",
@@ -95,31 +96,31 @@
   },
   "field-shift-adapting-farms": {
     "datasetIds": [
-      "nasa-power-api",
       "smap-l3-soil-moisture",
-      "hls-landsat-l30",
       "ecostress-et",
-      "oco-sif",
-      "gpm-imerg-daily"
+      "gpm-imerg-daily",
+      "hls-landsat-l30",
+      "nasa-power-api",
+      "grace-mascon"
     ],
     "firstSteps": [
       "Run the POWER starter for your farm's coordinates to get rainfall, temperature and sunlight.",
-      "Add SMAP soil moisture and MODIS NDVI to compare dry and wet seasons.",
-      "Interview or survey your target farmers to set the priorities your tool weighs."
+      "Add SMAP soil moisture, ECOSTRESS heat stress and GPM rainfall, resampled to one common grid.",
+      "Compare at least three rotations, including the current one, with the evidence and risks for each."
     ],
     "note": "Local soil and crop data are not NASA products; plan on sourcing them from a partner or a public soil survey."
   },
   "flame-in-freefall": {
     "datasetIds": [
-      "ntrs-api",
-      "nasa-psi"
+      "nasa-psi",
+      "ntrs-api"
     ],
     "firstSteps": [
-      "Run the NTRS starter and save a corpus of microgravity combustion and fire safety papers.",
-      "Browse the PSI repository's Combustion Science investigations and note which include raw data.",
-      "Decide on the summary format your AI will produce and test it on five papers by hand first."
+      "Browse PSI's combustion investigations (BASS, Saffire, SAME, FLEX, ACME) and note which include raw data.",
+      "Run the NTRS starter to collect the papers behind those investigations.",
+      "Choose the attributes your dashboard compares (fuel, oxygen level, airflow, sensors) and test summaries on five investigations by hand."
     ],
-    "note": "Coverage is thin: PSI has no documented public API, so expect manual downloads. The official resource list arrives Oct 28."
+    "note": "Coverage is thin: PSI has no documented public API, so expect manual downloads. Official resource lists open on the Space Apps site on Nov 13."
   },
   "modis-viirs-hot-spots": {
     "datasetIds": [
@@ -162,20 +163,21 @@
     "firstSteps": [
       "Load the Mars Trek CTX mosaic and MOLA hillshade layers into a web map.",
       "Pick a route and pull HiRISE images and terrain models along it.",
-      "Mark hazards (slopes, boulders) and science targets as your first data layer."
+      "Mark hazards (slopes, boulders) and science targets, then add at least one more data type, such as thermal or radiation."
     ],
-    "note": "The official resource list arrives Oct 28; THEMIS day and night thermal-infrared mosaics are also in Mars Trek."
+    "note": "Official resource lists open on the Space Apps site on Nov 13; THEMIS day and night thermal-infrared mosaics are also in Mars Trek."
   },
   "planet-x-and-spherex": {
     "datasetIds": [
       "irsa-spherex",
-      "jpl-sbdb",
-      "jpl-horizons"
+      "irsa-allwise",
+      "jpl-horizons",
+      "jpl-sbdb"
     ],
     "firstSteps": [
-      "Run the SPHEREx starter to list repeat visits of one patch of sky.",
-      "Use Horizons to predict where a known asteroid should appear in those images.",
-      "Build a blink comparison of two visits and confirm you can see the asteroid move."
+      "Run the SPHEREx starter to list repeat visits of the sky around WISE 0855 (RA 08h55m10.8s, Dec -7d14m42.5s).",
+      "Blink those visits in time order and check the brown dwarf moves against its AllWISE position.",
+      "Repeat for the statement's other test targets: Barnard's Star, Epsilon Indi B, RW Aurigae and R Draconis."
     ],
     "note": "SPHEREx data are Quick Release products and will change; check the IRSA SPHEREx page for the latest release."
   },

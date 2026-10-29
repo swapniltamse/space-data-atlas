@@ -13,6 +13,8 @@ const CORS = {
 };
 
 const byId = Object.fromEntries(atlas.datasets.map((d) => [d.id, d]));
+// Slugs renamed after the full statements came out, so older agent prompts still resolve.
+const OLD_SLUGS = { "clps-lunar-mission-browser": "lunar-landing-site-navigator" };
 const slim = (d) => ({ id: d.id, name: d.name, provider: d.provider, auth: d.auth, browserCors: d.browserCors, access: d.access, docsUrl: d.docsUrl });
 
 const TOOLS = [
@@ -32,7 +34,8 @@ const TOOLS = [
     description: "Get one Space Apps 2026 challenge by slug (from list_challenges): summary, official URL, first-hour steps, suggested datasets in priority order with access details, starter code, and related 2025 winners.",
     inputSchema: { type: "object", properties: { slug: { type: "string" } }, required: ["slug"] },
     run({ slug }) {
-      const c = atlas.challenges.find((x) => x.slug === slug || x.slug === String(slug).toLowerCase().trim());
+      const want = String(slug).toLowerCase().trim();
+      const c = atlas.challenges.find((x) => x.slug === slug || x.slug === want || x.slug === OLD_SLUGS[want]);
       if (!c) throw new UserError(`No challenge with slug "${slug}". Call list_challenges for valid slugs.`);
       return {
         ...c,
