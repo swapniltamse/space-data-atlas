@@ -2,7 +2,7 @@
   {
     "slug": "abandoned-but-not-forgotten",
     "title": "Abandoned but not Forgotten: Storytelling about NASA's Discarded Equipment on the Moon and Mars",
-    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/abandoned-but-not-forgotten-storytelling-about-nasas-discarded-equipment-on-the-moon-and-mars/",
+    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/nasas-discarded-equipment-storytelling/",
     "difficulty": ["Beginner/Youth", "Intermediate"],
     "subjects": ["Astrophysics", "Planets & Moons", "Space Exploration"],
     "summary": "Tell school-age space fans the story of hardware NASA has left on the Moon, on Mars and in deep space, and the science each piece made possible."
@@ -10,7 +10,7 @@
   {
     "slug": "earth-system-trend-detective",
     "title": "Be An Earth System Trend Detective!",
-    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/be-an-earth-system-trend-detective/",
+    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/earth-system-trend-detective/",
     "difficulty": ["Advanced"],
     "subjects": ["Earth Science", "Software"],
     "summary": "Pick variables measured by NASA missions or produced by NASA models, chart how they change over time and place, and decide whether those trends are statistically significant."
@@ -18,15 +18,15 @@
   {
     "slug": "junior-astronaut-mission-trainer",
     "title": "Build a Junior Astronaut Mission Trainer",
-    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/build-a-junior-astronaut-mission-trainer/",
+    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/junior-astronaut-mission-trainer/",
     "difficulty": ["Beginner/Youth", "Intermediate"],
     "subjects": ["Games", "Planets & Moons", "Software", "Space Exploration", "Sun"],
     "summary": "Build a game or app where students run a lunar or Martian outpost and balance life support, radiation shielding, power and food, so they feel the trade-offs that make or break a mission."
   },
   {
     "slug": "clps-lunar-mission-browser",
-    "title": "CLPS Lunar Mission Browser",
-    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/clps-lunar-mission-browser/",
+    "title": "Lunar Landing Site Navigator",
+    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/lunar-landing-site-navigator/",
     "difficulty": ["Intermediate", "Advanced"],
     "subjects": ["Human Exploration", "Moon", "Software", "Space Exploration"],
     "summary": "Make an easy tool for comparing lunar south pole landing sites and dates, showing where the Sun and Earth sit above the horizon so planners can judge solar power and direct-to-Earth communication windows."
@@ -34,7 +34,7 @@
   {
     "slug": "astronaut-health-monitoring",
     "title": "Create Health Monitoring Software for Astronauts on Space Missions",
-    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/create-health-monitoring-software-for-astronauts-on-space-missions/",
+    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/health-monitoring-software/",
     "difficulty": ["Intermediate"],
     "subjects": ["Human Exploration", "Software", "Space Exploration"],
     "summary": "Build software that collects health indicators so astronauts on long missions can track radiation, bone, heart and behavioral health risks themselves and act on what they see."
@@ -50,23 +50,23 @@
   {
     "slug": "field-shift-adapting-farms",
     "title": "Field Shift: Adapting Farms with NASA Data",
-    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/field-shift-adapting-farms-with-nasa-data/",
+    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/adapting-farms-with-nasa-data/",
     "difficulty": ["Intermediate", "Advanced"],
     "subjects": ["Arts & Multimedia", "Earth Science", "Software"],
     "summary": "Build a decision-support tool that combines NASA Earth observations with local soil, crop and farmer priorities to help choose crop rotations that protect soil and conserve water."
   },
   {
     "slug": "flame-in-freefall",
-    "title": "Flame in Freefall: AI-Powered Fire Safety Insights from Microgravity Combustion Data",
-    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall-ai-powered-fire-safety-insights-from-microgravity-combustion-data/",
+    "title": "Flame in Freefall: SI-Powered Fire Safety Insights from Microgravity Combustion Data",
+    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/",
     "difficulty": ["Intermediate", "Advanced"],
     "subjects": ["Space Exploration"],
-    "summary": "Build an AI-powered dashboard that summarizes, ranks and explains decades of NASA microgravity combustion results so they can inform fire safety for Moon and Mars missions."
+    "summary": "Build a dashboard powered by super intelligence (SI) that summarizes, ranks and explains decades of NASA microgravity combustion results so they can inform fire safety for Moon and Mars missions."
   },
   {
     "slug": "modis-viirs-hot-spots",
     "title": "Harmonization of MODIS and VIIRS Hot Spots",
-    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/harmonization-of-modis-and-viirs-hot-spots/",
+    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/modis-and-viirs-hot-spots/",
     "difficulty": ["Intermediate", "Advanced"],
     "subjects": ["Earth Science", "Software"],
     "summary": "Merge two decades of active-fire detections from MODIS and VIIRS into one consistent record, then build a web app that shows a burning-activity calendar for any area."
@@ -74,7 +74,7 @@
   {
     "slug": "earth-analogs-moon-mars",
     "title": "Identify Earth Locations that Analog the Permanent Moon Base Locations and Mars",
-    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/identify-earth-locations-that-analog-the-permanent-moon-base-locations-and-mars/",
+    "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/permanent-moon-base-locations-and-mars/",
     "difficulty": ["Beginner/Youth", "Intermediate", "Advanced"],
     "subjects": ["Earth Science", "Planets & Moons", "Software", "Space Exploration"],
     "summary": "Use open Earth, Moon and Mars data to find and describe new places on Earth, like deserts, polar regions, volcanic ground or caves, that resemble future lunar or Martian base sites."
