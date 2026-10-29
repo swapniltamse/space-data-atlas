@@ -21,8 +21,8 @@
       "giovanni",
       "gistemp",
       "grace-mascon",
-      "tempo-no2",
-      "pace-oci-bgc"
+      "gldas-noah-monthly",
+      "airs-monthly"
     ],
     "firstSteps": [
       "Pick a variable the statement names (MERRA-2, GLDAS, AIRS, GPM or MODIS) and preview it for one region in Giovanni.",
@@ -38,7 +38,7 @@
       "moon-trek-south-pole",
       "bvad-life-support",
       "nasa-image-library",
-      "nasa-3d-resources"
+      "nasa-osdr"
     ],
     "firstSteps": [
       "Pick two or three core resources, such as life support, power and shielding, and write the rules that link them.",
@@ -47,7 +47,7 @@
     ],
     "note": "No NASA dataset gives life-support numbers directly; cite NTRS reports for any figures you use."
   },
-  "clps-lunar-mission-browser": {
+  "lunar-landing-site-navigator": {
     "datasetIds": [
       "jpl-horizons",
       "pgda-lunar-polar-illumination",
@@ -101,7 +101,7 @@
       "gpm-imerg-daily",
       "hls-landsat-l30",
       "nasa-power-api",
-      "oco-sif"
+      "grace-mascon"
     ],
     "firstSteps": [
       "Run the POWER starter for your farm's coordinates to get rainfall, temperature and sunlight.",

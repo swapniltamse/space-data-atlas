@@ -506,6 +506,11 @@ writeFileSync(
 writeFileSync(new URL("../public/robots.txt", import.meta.url), `User-agent: *\nAllow: /\nSitemap: ${SITE}/sitemap.xml\n`);
 // Only /mcp runs as a Function; every other path is served straight from static assets.
 writeFileSync(new URL("../public/_routes.json", import.meta.url), JSON.stringify({ version: 1, include: ["/mcp"], exclude: [] }));
+// Space Apps renamed this challenge on Oct 28, 2026; keep old links working.
+writeFileSync(
+  new URL("../public/_redirects", import.meta.url),
+  `/challenges/clps-lunar-mission-browser/ /challenges/lunar-landing-site-navigator/ 301\n/challenges/clps-lunar-mission-browser /challenges/lunar-landing-site-navigator/ 301\n`,
+);
 writeFileSync(
   new URL("../public/_headers", import.meta.url),
   `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n`,

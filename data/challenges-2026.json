@@ -24,7 +24,7 @@
     "summary": "Build a game or app where students run a lunar or Martian outpost and balance life support, radiation shielding, power and food, so they feel the trade-offs that make or break a mission."
   },
   {
-    "slug": "clps-lunar-mission-browser",
+    "slug": "lunar-landing-site-navigator",
     "title": "Lunar Landing Site Navigator",
     "officialUrl": "https://www.spaceappschallenge.org/2026/challenges/lunar-landing-site-navigator/",
     "difficulty": ["Intermediate", "Advanced"],
